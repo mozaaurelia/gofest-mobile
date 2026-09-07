@@ -54,3 +54,16 @@ export const UPCOMING_CONCERTS: Concert[] = [
   { id: "u1", image: require("@/assets/images/react-logo.png"), name: "Ruang Bermusik", venue: "Lanud Wiriadinata", city: "Tasikmalaya", date: "9 Jan 2027", day: "9", month: "Jan", time: "16:00", price: "Rp 85K", from: "#2FA8C0", to: "#8FD14F" },
   { id: "u2", image: require("@/assets/images/tutorial-web.png"), name: "Warna Nada Fest", venue: "Transera Waterpark", city: "Bekasi", date: "29 Nov 2026", day: "29", month: "Nov", time: "13:00", price: "Rp 100K", from: "#8FD14F", to: "#F4D35E" },
 ];
+
+export const ALL_CONCERTS: Concert[] = [
+  ...FEATURED_CONCERTS,
+  ...POPULAR_CONCERTS,
+  ...LATEST_CONCERTS,
+  ...UPCOMING_CONCERTS,
+];
+
+export function getConcertById(id: string | string[] | undefined): Concert | undefined {
+  if (!id) return undefined;
+  const targetId = Array.isArray(id) ? id[0] : id;
+  return ALL_CONCERTS.find((c) => c.id === targetId);
+}

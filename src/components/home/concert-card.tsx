@@ -4,6 +4,7 @@ import { Image } from "expo-image";
 import { Concert } from "../../constants/home-data";
 import { gfColors } from "../../constants/gf-theme";
 
+
 type ConcertCardProps = { concert: Concert };
 
 export default function ConcertCard({ concert }: ConcertCardProps) {

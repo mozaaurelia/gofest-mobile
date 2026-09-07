@@ -1,0 +1,39 @@
+import React from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import Svg, { Path } from "react-native-svg";
+import { gfColors } from "../../constants/gf-theme";
+
+type DetailListItemProps = {
+  emoji: string;
+  title: string;
+  subtitle: string;
+  showBadge?: boolean;
+};
+
+export default function DetailListItem({ emoji, title, subtitle, showBadge }: DetailListItemProps) {
+  return (
+    <Pressable style={styles.row}>
+      <View style={styles.iconBox}>
+        <Text style={styles.emoji}>{emoji}</Text>
+      </View>
+      <View style={styles.textWrap}>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.subtitle}>{subtitle}</Text>
+      </View>
+      {showBadge && <View style={styles.badge} />}
+      <Svg viewBox="0 0 24 24" width={16} height={16} fill="none">
+        <Path d="M9 6l6 6-6 6" stroke={gfColors.textMuted} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+      </Svg>
+    </Pressable>
+  );
+}
+
+const styles = StyleSheet.create({
+  row: { flexDirection: "row", alignItems: "center", gap: 12, paddingVertical: 14, borderBottomWidth: 1, borderBottomColor: gfColors.border },
+  iconBox: { width: 40, height: 40, borderRadius: 12, backgroundColor: gfColors.surface, alignItems: "center", justifyContent: "center" },
+  emoji: { fontSize: 18 },
+  textWrap: { flex: 1 },
+  title: { fontSize: 13.5, fontWeight: "700", color: gfColors.text },
+  subtitle: { fontSize: 11.5, color: gfColors.textMuted, marginTop: 2 },
+  badge: { width: 8, height: 8, borderRadius: 4, backgroundColor: "#F2545B" },
+});
