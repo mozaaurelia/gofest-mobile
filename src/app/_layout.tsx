@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Stack, useRouter, useRootNavigationState } from "expo-router";
 import AnimatedSplashScreen from "../components/animated-splash-screen";
+import { ThemeProvider } from "../constants/gf-theme";
 
 export default function RootLayout() {
   const [showSplash, setShowSplash] = useState(true);
@@ -16,11 +17,11 @@ export default function RootLayout() {
   }, [navigationState?.key, showSplash]);
 
   return (
-    <>
+    <ThemeProvider>
       <Stack screenOptions={{ headerShown: false }} />
       {showSplash && (
         <AnimatedSplashScreen onFinish={() => setShowSplash(false)} />
       )}
-    </>
+    </ThemeProvider>
   );
 } 

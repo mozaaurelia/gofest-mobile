@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, ImageSourcePropType, StyleSheet, View, useWindowDimensions } from "react-native";
-import { gfColors } from "../../constants/gf-theme";
+import { GfColors, useThemeColors } from "../../constants/gf-theme";
 
 type DetailPosterProps = {
   from: string;
@@ -9,6 +9,8 @@ type DetailPosterProps = {
 };
 
 export default function DetailPoster({ from, to, image }: DetailPosterProps) {
+  const c = useThemeColors();
+  const styles = makeStyles(c);
   const { width } = useWindowDimensions();
   const height = width * 1.1;
 
@@ -29,6 +31,8 @@ export default function DetailPoster({ from, to, image }: DetailPosterProps) {
   );
 }
 
-const styles = StyleSheet.create({
-  wrap: { width: "100%", backgroundColor: gfColors.surface },
-});
+function makeStyles(c: GfColors) {
+  return StyleSheet.create({
+    wrap: { width: "100%", backgroundColor: c.surface },
+  });
+}

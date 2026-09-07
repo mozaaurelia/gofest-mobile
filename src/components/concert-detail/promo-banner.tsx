@@ -1,16 +1,17 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Svg, { Path } from "react-native-svg";
-import { gfColors } from "../../constants/gf-theme";
+import { useThemeColors } from "../../constants/gf-theme";
 
 export default function PromoBanner() {
+  const c = useThemeColors();
   return (
     <View style={styles.wrap}>
       <Text style={styles.text}>
         Tiket baru tersedia! <Text style={styles.link}>Lihat Info Tiket</Text>
       </Text>
       <Svg viewBox="0 0 24 24" width={13} height={13} fill="none">
-        <Path d="M7 17 17 7M9 7h8v8" stroke={gfColors.lime} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+        <Path d="M7 17 17 7M9 7h8v8" stroke={c.lime} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
       </Svg>
     </View>
   );

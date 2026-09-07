@@ -2,13 +2,15 @@ import React, { useEffect, useRef } from "react";
 import { Animated, Easing, StyleSheet } from "react-native";
 import Svg, { Defs, RadialGradient, Stop, Rect } from "react-native-svg";
 import TicketIcon from "./ticket-icon";
-import { gfColors } from "../constants/gf-theme";
+import { GfColors, useThemeColors } from "../constants/gf-theme";
 
 type AnimatedSplashScreenProps = {
   onFinish: () => void;
 };
 
 export default function AnimatedSplashScreen({ onFinish }: AnimatedSplashScreenProps) {
+  const c = useThemeColors();
+  const styles = makeStyles(c);
   const glowScale = useRef(new Animated.Value(1)).current;
   const glowOpacity = useRef(new Animated.Value(0.25)).current;
   const iconScale = useRef(new Animated.Value(0.7)).current;
@@ -65,8 +67,8 @@ export default function AnimatedSplashScreen({ onFinish }: AnimatedSplashScreenP
       <Svg style={StyleSheet.absoluteFill} width="100%" height="100%">
         <Defs>
           <RadialGradient id="vignette" cx="50%" cy="42%" r="65%">
-            <Stop offset="0%" stopColor={gfColors.surface} stopOpacity={1} />
-            <Stop offset="100%" stopColor={gfColors.bg} stopOpacity={1} />
+            <Stop offset="0%" stopColor={c.surface} stopOpacity={1} />
+            <Stop offset="100%" stopColor={c.bg} stopOpacity={1} />
           </RadialGradient>
         </Defs>
         <Rect width="100%" height="100%" fill="url(#vignette)" />
@@ -85,8 +87,10 @@ export default function AnimatedSplashScreen({ onFinish }: AnimatedSplashScreenP
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: gfColors.bg, alignItems: "center", justifyContent: "center" },
-  glow: { position: "absolute", width: 220, height: 220, borderRadius: 110, backgroundColor: gfColors.teal },
-  wordmark: { marginTop: 22, fontSize: 26, fontWeight: "800", color: gfColors.text, letterSpacing: 0.2 },
-});
+function makeStyles(c: GfColors) {
+  return StyleSheet.create({
+    container: { flex: 1, backgroundColor: c.bg, alignItems: "center", justifyContent: "center" },
+    glow: { position: "absolute", width: 220, height: 220, borderRadius: 110, backgroundColor: c.teal },
+    wordmark: { marginTop: 22, fontSize: 26, fontWeight: "800", color: c.text, letterSpacing: 0.2 },
+  });
+}

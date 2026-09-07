@@ -5,9 +5,11 @@ import AuthHeader from "../../components/auth/auth-header";
 import TicketPreviewCard from "../../components/auth/ticket-preview-card";
 import LoginForm from "../../components/auth/login-form";
 import AuthSwitchLink from "../../components/auth/auth-switch-link";
-import { gfColors } from "../../constants/gf-theme";
+import { GfColors, useThemeColors } from "../../constants/gf-theme";
 
 export default function LoginScreen() {
+  const c = useThemeColors();
+  const styles = makeStyles(c);
   return (
     <SafeAreaView style={styles.safe}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
@@ -20,7 +22,9 @@ export default function LoginScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: gfColors.bg },
-  content: { paddingBottom: 40 },
-});
+function makeStyles(c: GfColors) {
+  return StyleSheet.create({
+    safe: { flex: 1, backgroundColor: c.bg },
+    content: { paddingBottom: 40 },
+  });
+}

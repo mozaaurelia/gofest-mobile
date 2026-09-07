@@ -8,9 +8,11 @@ import FeaturedCarousel from "../components/home/featured-carousel";
 import ConcertSection from "../components/home/concert-section";
 import BottomNav from "../components/home/bottom-nav";
 import { FEATURED_CONCERTS, POPULAR_CONCERTS, LATEST_CONCERTS, UPCOMING_CONCERTS } from "../constants/home-data";
-import { gfColors } from "../constants/gf-theme";
+import { GfColors, useThemeColors } from "../constants/gf-theme";
 
 export default function HomeScreen() {
+  const c = useThemeColors();
+  const styles = makeStyles(c);
   return (
     <SafeAreaView style={styles.safe}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
@@ -28,7 +30,9 @@ export default function HomeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: gfColors.bg },
-  content: { paddingBottom: 120 },
-});
+function makeStyles(c: GfColors) {
+  return StyleSheet.create({
+    safe: { flex: 1, backgroundColor: c.bg },
+    content: { paddingBottom: 120 },
+  });
+}

@@ -6,9 +6,11 @@ import { ONBOARDING_STEPS } from "../constants/onboarding-data";
 import OnboardingSlide from "../components/onboarding/onboarding-slide";
 import OnboardingProgressBar from "../components/onboarding/onboarding-progress-bar";
 import OnboardingNav from "../components/onboarding/onboarding-nav";
-import { gfColors } from "../constants/gf-theme";
+import { GfColors, useThemeColors } from "../constants/gf-theme";
 
 export default function OnboardingScreen() {
+  const c = useThemeColors();
+  const styles = makeStyles(c);
   const { width } = useWindowDimensions();
   const [activeIndex, setActiveIndex] = useState(0);
   const listRef = useRef<FlatList>(null);
@@ -71,10 +73,12 @@ export default function OnboardingScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: gfColors.bg },
-  topRow: { flexDirection: "row", alignItems: "center", paddingTop: 12, paddingBottom: 4 },
-  skipButton: { position: "absolute", right: 24, top: 8 },
-  skipText: { fontSize: 12.5, fontWeight: "600", color: gfColors.textMuted },
-  list: { flex: 1 },
-});
+function makeStyles(c: GfColors) {
+  return StyleSheet.create({
+    safe: { flex: 1, backgroundColor: c.bg },
+    topRow: { flexDirection: "row", alignItems: "center", paddingTop: 12, paddingBottom: 4 },
+    skipButton: { position: "absolute", right: 24, top: 8 },
+    skipText: { fontSize: 12.5, fontWeight: "600", color: c.textMuted },
+    list: { flex: 1 },
+  });
+}

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import Svg, { Path, Rect } from "react-native-svg";
-import { gfColors } from "../../constants/gf-theme";
+import { GfColors, useThemeColors } from "../../constants/gf-theme";
 
 const TABS = ["home", "explore", "tickets", "profile"] as const;
 type Tab = (typeof TABS)[number];
 
 export default function BottomNav() {
+  const c = useThemeColors();
+  const styles = makeStyles(c);
   const [active, setActive] = useState<Tab>("home");
 
   return (
@@ -16,7 +18,7 @@ export default function BottomNav() {
         return (
           <Pressable key={tab} onPress={() => setActive(tab)} style={styles.item}>
             <View style={[styles.iconWrap, isActive && styles.iconWrapActive]}>
-              <TabGlyph tab={tab} active={isActive} />
+              <TabGlyph tab={tab} active={isActive} mutedColor={c.textMuted} />
             </View>
           </Pressable>
         );
@@ -25,8 +27,8 @@ export default function BottomNav() {
   );
 }
 
-function TabGlyph({ tab, active }: { tab: Tab; active: boolean }) {
-  const color = active ? "#10151D" : gfColors.textMuted;
+function TabGlyph({ tab, active, mutedColor }: { tab: Tab; active: boolean; mutedColor: string }) {
+  const color = active ? "#10151D" : mutedColor;
   const common = { viewBox: "0 0 24 24", width: 20, height: 20, fill: "none" as const };
 
   switch (tab) {
@@ -41,27 +43,29 @@ function TabGlyph({ tab, active }: { tab: Tab; active: boolean }) {
   }
 }
 
-const styles = StyleSheet.create({
-  wrap: {
-    position: "absolute",
-    bottom: 24,
-    left: 24,
-    right: 24,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: gfColors.surface,
-    borderWidth: 1,
-    borderColor: gfColors.border,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-around",
-    shadowColor: "#000",
-    shadowOpacity: 0.3,
-    shadowRadius: 16,
-    shadowOffset: { width: 0, height: 8 },
-    elevation: 10,
-  },
-  item: { flex: 1, alignItems: "center", justifyContent: "center" },
-  iconWrap: { width: 40, height: 40, borderRadius: 20, alignItems: "center", justifyContent: "center" },
-  iconWrapActive: { backgroundColor: gfColors.text },
-});
+function makeStyles(c: GfColors) {
+  return StyleSheet.create({
+    wrap: {
+      position: "absolute",
+      bottom: 24,
+      left: 24,
+      right: 24,
+      height: 64,
+      borderRadius: 32,
+      backgroundColor: c.surface,
+      borderWidth: 1,
+      borderColor: c.border,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-around",
+      shadowColor: "#000",
+      shadowOpacity: 0.3,
+      shadowRadius: 16,
+      shadowOffset: { width: 0, height: 8 },
+      elevation: 10,
+    },
+    item: { flex: 1, alignItems: "center", justifyContent: "center" },
+    iconWrap: { width: 40, height: 40, borderRadius: 20, alignItems: "center", justifyContent: "center" },
+    iconWrapActive: { backgroundColor: c.text },
+  });
+}
