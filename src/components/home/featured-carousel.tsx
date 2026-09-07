@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FlatList, NativeScrollEvent, NativeSyntheticEvent, Pressable, StyleSheet, Text, View, useWindowDimensions } from "react-native";
+import { Image } from "expo-image";
 import Svg, { Path } from "react-native-svg";
 import { Concert } from "../../constants/home-data";
 import { gfColors } from "../../constants/gf-theme";
@@ -9,7 +10,7 @@ type FeaturedCarouselProps = { data: Concert[] };
 const SIDE_PADDING = 20;
 
 /**
- * FeaturedCarousel - banner auto-jalan sendiri (tiap 4 detik), ada
+ * FeaturedCarousel - banner auto-jalan sendiri (tiap 2 detik), ada
  * tombol panah kiri-kanan buat kontrol manual, dan dots di bawah.
  */
 export default function FeaturedCarousel({ data }: FeaturedCarouselProps) {
@@ -33,7 +34,7 @@ export default function FeaturedCarousel({ data }: FeaturedCarouselProps) {
         listRef.current?.scrollToIndex({ index: next, animated: true });
         return next;
       });
-    }, 4000);
+    }, 2000);
   }
 
   function stopAutoPlay() {
@@ -98,11 +99,15 @@ export default function FeaturedCarousel({ data }: FeaturedCarouselProps) {
 function BannerSlide({ concert, width }: { concert: Concert; width: number }) {
   return (
     <View style={[styles.card, { width }]}>
-      <View style={[styles.poster, { backgroundColor: concert.from }]}>
-        <View style={styles.dateBadge}>
-          <Text style={styles.dateDay}>{concert.day}</Text>
-          <Text style={styles.dateMonth}>{concert.month}</Text>
-        </View>
+      <View style={styles.poster}>
+        {concert.image ? (
+          <Image source={concert.image} style={styles.posterImage} contentFit="cover" transition={150} />
+        ) : (
+          <View style={styles.dateBadge}>
+            <Text style={styles.dateDay}>{concert.day}</Text>
+            <Text style={styles.dateMonth}>{concert.month}</Text>
+          </View>
+        )}
       </View>
 
       <View style={styles.info}>
@@ -126,8 +131,9 @@ function BannerSlide({ concert, width }: { concert: Concert; width: number }) {
 const styles = StyleSheet.create({
   wrap: { marginTop: 20 },
   card: { borderRadius: 22, overflow: "hidden", backgroundColor: gfColors.surface, borderWidth: 1, borderColor: gfColors.border },
-  poster: { height: 160, padding: 14 },
-  dateBadge: { alignSelf: "flex-start", backgroundColor: "rgba(0,0,0,0.35)", borderRadius: 12, paddingHorizontal: 10, paddingVertical: 6, alignItems: "center" },
+  poster: { height: 160 },
+  posterImage: { width: "100%", height: "100%" },
+  dateBadge: { position: "absolute", left: 14, top: 14, backgroundColor: "rgba(0,0,0,0.35)", borderRadius: 12, paddingHorizontal: 10, paddingVertical: 6, alignItems: "center" },
   dateDay: { fontSize: 16, fontWeight: "800", color: "#FFFFFF", lineHeight: 18 },
   dateMonth: { fontSize: 10, fontWeight: "600", color: "#FFFFFF", opacity: 0.85 },
   info: { padding: 16 },

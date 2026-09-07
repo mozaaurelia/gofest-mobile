@@ -33,10 +33,10 @@ export const FEATURED_CONCERT: Concert = {
 };
 
 export const FEATURED_CONCERTS: Concert[] = [
-  { id: "f1", name: "Bumi Harmoni Fest", venue: "GBK Stadium", city: "Jakarta", date: "14 Sep 2026", day: "14", month: "Sep", time: "19:00", price: "Rp 250K", from: "#2FA8C0", to: "#8FD14F" },
-  { id: "f2", name: "Sunset Beats", venue: "Beach Club", city: "Bali", date: "28 Sep 2026", day: "28", month: "Sep", time: "18:00", price: "Rp 375K", from: "#8FD14F", to: "#7BC943" },
-  { id: "f3", name: "Djakarta Sound Fest", venue: "Istora Senayan", city: "Jakarta", date: "5 Okt 2026", day: "5", month: "Okt", time: "19:30", price: "Rp 420K", from: "#2FA8C0", to: "#5B6EE1" },
-  { id: "f4", name: "Kota Kilau", venue: "JX International", city: "Surabaya", date: "2 Nov 2026", day: "2", month: "Nov", time: "19:00", price: "Rp 450K", from: "#F4D35E", to: "#8FD14F" },
+  { id: "f1", image: require("@/assets/images/expo-logo.png"), name: "Bumi Harmoni Fest", venue: "GBK Stadium", city: "Jakarta", date: "14 Sep 2026", day: "14", month: "Sep", time: "19:00", price: "Rp 250K", from: "#2FA8C0", to: "#8FD14F" },
+  { id: "f2", image: require("@/assets/images/react-logo.png"), name: "Sunset Beats", venue: "Beach Club", city: "Bali", date: "28 Sep 2026", day: "28", month: "Sep", time: "18:00", price: "Rp 375K", from: "#8FD14F", to: "#7BC943" },
+  { id: "f3", image: require("@/assets/images/tutorial-web.png"), name: "Djakarta Sound Fest", venue: "Istora Senayan", city: "Jakarta", date: "5 Okt 2026", day: "5", month: "Okt", time: "19:30", price: "Rp 420K", from: "#2FA8C0", to: "#5B6EE1" },
+  { id: "f4", image: require("@/assets/images/logo-glow.png"), name: "Kota Kilau", venue: "JX International", city: "Surabaya", date: "2 Nov 2026", day: "2", month: "Nov", time: "19:00", price: "Rp 450K", from: "#F4D35E", to: "#8FD14F" },
 ];
 
 export const POPULAR_CONCERTS: Concert[] = [

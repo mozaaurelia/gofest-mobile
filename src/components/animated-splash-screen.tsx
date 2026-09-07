@@ -65,7 +65,7 @@ export default function AnimatedSplashScreen({ onFinish }: AnimatedSplashScreenP
       <Svg style={StyleSheet.absoluteFill} width="100%" height="100%">
         <Defs>
           <RadialGradient id="vignette" cx="50%" cy="42%" r="65%">
-            <Stop offset="0%" stopColor="#242C3A" stopOpacity={1} />
+            <Stop offset="0%" stopColor={gfColors.surface} stopOpacity={1} />
             <Stop offset="100%" stopColor={gfColors.bg} stopOpacity={1} />
           </RadialGradient>
         </Defs>
