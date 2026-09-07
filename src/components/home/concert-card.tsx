@@ -1,5 +1,6 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Image } from "expo-image";
 import { Concert } from "../../constants/home-data";
 import { gfColors } from "../../constants/gf-theme";
 
@@ -8,12 +9,15 @@ type ConcertCardProps = { concert: Concert };
 export default function ConcertCard({ concert }: ConcertCardProps) {
   return (
     <Pressable style={styles.card}>
-      {/* Poster - taro image mu di sini */}
-      <View style={[styles.poster, { backgroundColor: concert.from }]}>
-        <View style={styles.dateBadge}>
-          <Text style={styles.dateDay}>{concert.day}</Text>
-          <Text style={styles.dateMonth}>{concert.month}</Text>
-        </View>
+      <View style={styles.poster}>
+        {concert.image ? (
+          <Image source={concert.image} style={styles.posterImage} contentFit="cover" transition={150} />
+        ) : (
+          <View style={styles.dateBadge}>
+            <Text style={styles.dateDay}>{concert.day}</Text>
+            <Text style={styles.dateMonth}>{concert.month}</Text>
+          </View>
+        )}
       </View>
       <View style={styles.body}>
         <Text style={styles.name} numberOfLines={1}>{concert.name}</Text>
@@ -29,8 +33,9 @@ export default function ConcertCard({ concert }: ConcertCardProps) {
 
 const styles = StyleSheet.create({
   card: { width: 168, borderRadius: 18, overflow: "hidden", backgroundColor: gfColors.surface, borderWidth: 1, borderColor: gfColors.border },
-  poster: { height: 100, padding: 8 },
-  dateBadge: { alignSelf: "flex-start", backgroundColor: "rgba(0,0,0,0.35)", borderRadius: 8, paddingHorizontal: 7, paddingVertical: 4, alignItems: "center" },
+  poster: { height: 100 },
+  posterImage: { width: "100%", height: "100%" },
+  dateBadge: { position: "absolute", left: 8, top: 8, backgroundColor: "rgba(0,0,0,0.35)", borderRadius: 8, paddingHorizontal: 7, paddingVertical: 4, alignItems: "center" },
   dateDay: { fontSize: 12, fontWeight: "800", color: "#FFFFFF", lineHeight: 13 },
   dateMonth: { fontSize: 8, fontWeight: "600", color: "#FFFFFF", opacity: 0.85 },
   body: { padding: 10 },

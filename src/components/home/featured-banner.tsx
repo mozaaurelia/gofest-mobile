@@ -1,5 +1,6 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Image } from "expo-image";
 import { Concert } from "../../constants/home-data";
 import { gfColors } from "../../constants/gf-theme";
 
@@ -8,12 +9,15 @@ type FeaturedBannerProps = { concert: Concert };
 export default function FeaturedBanner({ concert }: FeaturedBannerProps) {
   return (
     <View style={styles.wrap}>
-      {/* Poster - taro image mu di sini */}
-      <View style={[styles.poster, { backgroundColor: concert.from }]}>
-        <View style={styles.dateBadge}>
-          <Text style={styles.dateDay}>{concert.day}</Text>
-          <Text style={styles.dateMonth}>{concert.month}</Text>
-        </View>
+      <View style={styles.poster}>
+        {concert.image ? (
+          <Image source={concert.image} style={styles.posterImage} contentFit="cover" transition={150} />
+        ) : (
+          <View style={styles.dateBadge}>
+            <Text style={styles.dateDay}>{concert.day}</Text>
+            <Text style={styles.dateMonth}>{concert.month}</Text>
+          </View>
+        )}
       </View>
 
       <View style={styles.info}>
@@ -36,8 +40,9 @@ export default function FeaturedBanner({ concert }: FeaturedBannerProps) {
 
 const styles = StyleSheet.create({
   wrap: { marginTop: 20, marginHorizontal: 20, borderRadius: 22, overflow: "hidden", backgroundColor: gfColors.surface, borderWidth: 1, borderColor: gfColors.border },
-  poster: { height: 160, padding: 14 },
-  dateBadge: { alignSelf: "flex-start", backgroundColor: "rgba(0,0,0,0.35)", borderRadius: 12, paddingHorizontal: 10, paddingVertical: 6, alignItems: "center" },
+  poster: { height: 160 },
+  posterImage: { width: "100%", height: "100%" },
+  dateBadge: { position: "absolute", left: 14, top: 14, backgroundColor: "rgba(0,0,0,0.35)", borderRadius: 12, paddingHorizontal: 10, paddingVertical: 6, alignItems: "center" },
   dateDay: { fontSize: 16, fontWeight: "800", color: "#FFFFFF", lineHeight: 18 },
   dateMonth: { fontSize: 10, fontWeight: "600", color: "#FFFFFF", opacity: 0.85 },
   info: { padding: 16 },
