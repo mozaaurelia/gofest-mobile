@@ -1,18 +1,26 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { Stack, useRouter, useRootNavigationState } from "expo-router";
+import AnimatedSplashScreen from "../components/animated-splash-screen";
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
+export default function RootLayout() {
+  const [showSplash, setShowSplash] = useState(true);
+  const router = useRouter();
+  const navigationState = useRootNavigationState();
 
-SplashScreen.preventAutoHideAsync();
+  useEffect(() => {
+    // Tunggu sampai navigator beneran siap sebelum navigasi
+    if (!navigationState?.key) return;
+    if (!showSplash) {
+      router.replace("/onboarding");
+    }
+  }, [navigationState?.key, showSplash]);
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
+    <>
+      <Stack screenOptions={{ headerShown: false }} />
+      {showSplash && (
+        <AnimatedSplashScreen onFinish={() => setShowSplash(false)} />
+      )}
+    </>
   );
-}
+} 
