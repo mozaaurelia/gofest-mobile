@@ -1,15 +1,17 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { useI18n } from "../../constants/i18n";
 
 export default function SocialLoginRow() {
   const c = useThemeColors();
   const styles = makeStyles(c);
+  const { t } = useI18n();
   return (
     <View style={styles.wrap}>
       <View style={styles.dividerRow}>
         <View style={styles.line} />
-        <Text style={styles.dividerText}>Atau lanjutkan dengan</Text>
+        <Text style={styles.dividerText}>{t("socialOr")}</Text>
         <View style={styles.line} />
       </View>
       <View style={styles.buttonsRow}>

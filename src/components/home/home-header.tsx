@@ -1,18 +1,23 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Svg, { Circle, Path } from "react-native-svg";
-import { Moon, Sun } from "lucide-react-native";
+import { Hand, Moon, Sun } from "lucide-react-native";
 import { GfColors, useTheme, useThemeColors } from "../../constants/gf-theme";
+import { useI18n } from "../../constants/i18n";
 
 export default function HomeHeader() {
   const c = useThemeColors();
   const styles = makeStyles(c);
   const { scheme, toggleScheme } = useTheme();
+  const { t } = useI18n();
 
   return (
     <View style={styles.row}>
       <View>
-        <Text style={styles.greeting}>Halo, Fajar 👋</Text>
+        <View style={styles.greetingRow}>
+          <Text style={styles.greeting}>{t("greeting")}, Fajar</Text>
+          <Hand size={17} color={c.text} strokeWidth={2.2} />
+        </View>
         <Text style={styles.location}>Jakarta, Indonesia</Text>
       </View>
 
@@ -42,6 +47,7 @@ export default function HomeHeader() {
 function makeStyles(c: GfColors) {
   return StyleSheet.create({
     row: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 20, paddingTop: 8 },
+    greetingRow: { flexDirection: "row", alignItems: "center", gap: 4 },
     greeting: { fontSize: 17, fontWeight: "800", color: c.text },
     location: { fontSize: 12, color: c.textMuted, marginTop: 2 },
     actions: { flexDirection: "row", alignItems: "center", gap: 10 },

@@ -7,10 +7,12 @@ import OnboardingSlide from "../components/onboarding/onboarding-slide";
 import OnboardingProgressBar from "../components/onboarding/onboarding-progress-bar";
 import OnboardingNav from "../components/onboarding/onboarding-nav";
 import { GfColors, useThemeColors } from "../constants/gf-theme";
+import { useI18n } from "../constants/i18n";
 
 export default function OnboardingScreen() {
   const c = useThemeColors();
   const styles = makeStyles(c);
+  const { t } = useI18n();
   const { width } = useWindowDimensions();
   const [activeIndex, setActiveIndex] = useState(0);
   const listRef = useRef<FlatList>(null);
@@ -49,7 +51,7 @@ export default function OnboardingScreen() {
         <OnboardingProgressBar total={ONBOARDING_STEPS.length} activeIndex={activeIndex} />
         {!isLastStep && (
           <Pressable onPress={handleSkip} hitSlop={10} style={styles.skipButton}>
-            <Text style={styles.skipText}>Lewati</Text>
+            <Text style={styles.skipText}>{t("skip")}</Text>
           </Pressable>
         )}
       </View>

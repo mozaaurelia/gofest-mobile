@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import Svg, { Path, Rect } from "react-native-svg";
+import Svg, { Path } from "react-native-svg";
+import { router, usePathname } from "expo-router";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 
 const TABS = ["home", "explore", "tickets", "profile"] as const;
@@ -9,14 +10,39 @@ type Tab = (typeof TABS)[number];
 export default function BottomNav() {
   const c = useThemeColors();
   const styles = makeStyles(c);
-  const [active, setActive] = useState<Tab>("home");
+  const pathname = usePathname();
+  const [pressedTab, setPressedTab] = useState<Tab | null>(null);
+
+  useEffect(() => {
+    setPressedTab(null);
+  }, [pathname]);
+
+  function routeTab(): Tab {
+    if (pathname.startsWith("/profile")) return "profile";
+    if (pathname.startsWith("/explore")) return "explore";
+    return "home";
+  }
+
+  function handlePress(tab: Tab) {
+    if (tab === "profile") {
+      router.navigate("/profile");
+    } else if (tab === "home") {
+      router.navigate("/home");
+    } else if (tab === "explore") {
+      router.navigate("/explore");
+    } else {
+      setPressedTab(tab);
+    }
+  }
+
+  const active = pressedTab ?? routeTab();
 
   return (
     <View style={styles.wrap}>
       {TABS.map((tab) => {
         const isActive = tab === active;
         return (
-          <Pressable key={tab} onPress={() => setActive(tab)} style={styles.item}>
+          <Pressable key={tab} onPress={() => handlePress(tab)} style={styles.item}>
             <View style={[styles.iconWrap, isActive && styles.iconWrapActive]}>
               <TabGlyph tab={tab} active={isActive} mutedColor={c.textMuted} />
             </View>

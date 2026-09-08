@@ -2,17 +2,19 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import TicketIcon from "../ticket-icon";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { useI18n } from "../../constants/i18n";
 
 export default function AuthHeader() {
   const c = useThemeColors();
   const styles = makeStyles(c);
+  const { t } = useI18n();
   return (
     <View style={styles.container}>
       <View style={styles.logoRow}>
         <TicketIcon size={30} />
         <Text style={styles.wordmark}>Go fest!</Text>
       </View>
-      <Text style={styles.tagline}>Satu platform tiket konser & festival</Text>
+      <Text style={styles.tagline}>{t("authTagline")}</Text>
     </View>
   );
 }

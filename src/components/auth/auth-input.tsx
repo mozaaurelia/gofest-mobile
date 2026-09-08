@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, TextInput, TextInputProps, View } from "react-native";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { useI18n } from "../../constants/i18n";
 
 type AuthInputProps = TextInputProps & { label: string; isPassword?: boolean; error?: string };
 
 export default function AuthInput({ label, isPassword, error, ...rest }: AuthInputProps) {
   const c = useThemeColors();
   const styles = makeStyles(c);
+  const { t } = useI18n();
   const [focused, setFocused] = useState(false);
   const [secure, setSecure] = useState(!!isPassword);
 
@@ -24,7 +26,7 @@ export default function AuthInput({ label, isPassword, error, ...rest }: AuthInp
         />
         {isPassword && (
           <Pressable onPress={() => setSecure((v) => !v)} hitSlop={10}>
-            <Text style={styles.toggleText}>{secure ? "Lihat" : "Sembunyikan"}</Text>
+            <Text style={styles.toggleText}>{secure ? t("inputShow") : t("inputHide")}</Text>
           </Pressable>
         )}
       </View>

@@ -5,6 +5,7 @@ import { router } from "expo-router";
 import Svg, { Path } from "react-native-svg";
 import { Concert } from "../../constants/home-data";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { useI18n } from "../../constants/i18n";
 
 type FeaturedCarouselProps = { data: Concert[] };
 
@@ -102,6 +103,7 @@ export default function FeaturedCarousel({ data }: FeaturedCarouselProps) {
 function BannerSlide({ concert, width }: { concert: Concert; width: number }) {
   const c = useThemeColors();
   const styles = makeStyles(c);
+  const { t } = useI18n();
   return (
     <Pressable style={[styles.card, { width }]} onPress={() => router.push({ pathname: "/concert/[id]", params: { id: concert.id } })}>
       <View style={styles.poster}>
@@ -121,11 +123,11 @@ function BannerSlide({ concert, width }: { concert: Concert; width: number }) {
 
         <View style={styles.footerRow}>
           <View>
-            <Text style={styles.priceLabel}>Mulai dari</Text>
+            <Text style={styles.priceLabel}>{t("priceFrom")}</Text>
             <Text style={styles.price}>{concert.price}</Text>
           </View>
           <Pressable style={styles.cta} onPress={() => router.push({ pathname: "/concert/[id]", params: { id: concert.id } })}>
-            <Text style={styles.ctaText}>Lihat Konser</Text>
+            <Text style={styles.ctaText}>{t("viewConcert")}</Text>
           </Pressable>
         </View>
       </View>

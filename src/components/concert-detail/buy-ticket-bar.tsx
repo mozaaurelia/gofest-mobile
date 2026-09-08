@@ -3,10 +3,12 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Svg, { Path } from "react-native-svg";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { useI18n } from "../../constants/i18n";
 
 export default function BuyTicketBar() {
   const c = useThemeColors();
   const styles = makeStyles(c);
+  const { t } = useI18n();
   return (
     <View style={styles.wrap}>
       <Pressable style={styles.bookmark}>
@@ -18,7 +20,7 @@ export default function BuyTicketBar() {
       <Pressable style={{ flex: 1 }}>
         <LinearGradient colors={[c.teal, c.lime]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.button}>
           <TicketGlyph />
-          <Text style={styles.buttonText}>Beli Tiket</Text>
+          <Text style={styles.buttonText}>{t("buyTicket")}</Text>
         </LinearGradient>
       </Pressable>
     </View>

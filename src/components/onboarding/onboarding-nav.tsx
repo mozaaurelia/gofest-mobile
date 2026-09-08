@@ -3,12 +3,14 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Svg, { Path } from "react-native-svg";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { useI18n } from "../../constants/i18n";
 
 type OnboardingNavProps = { onBack: () => void; onNext: () => void; showBack: boolean; isLastStep: boolean };
 
 export default function OnboardingNav({ onBack, onNext, showBack, isLastStep }: OnboardingNavProps) {
   const c = useThemeColors();
   const styles = makeStyles(c);
+  const { t } = useI18n();
   return (
     <View style={styles.row}>
       {showBack ? (
@@ -24,7 +26,7 @@ export default function OnboardingNav({ onBack, onNext, showBack, isLastStep }: 
       <Pressable onPress={onNext}>
         <LinearGradient colors={[c.teal, c.lime]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={isLastStep ? styles.nextPill : styles.nextCircle}>
           {isLastStep ? (
-            <Text style={styles.nextLabel}>Mulai</Text>
+            <Text style={styles.nextLabel}>{t("getStarted")}</Text>
           ) : (
             <Svg viewBox="0 0 24 24" width={18} height={18} fill="none">
               <Path d="M9 6l6 6-6 6" stroke="#10151D" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />

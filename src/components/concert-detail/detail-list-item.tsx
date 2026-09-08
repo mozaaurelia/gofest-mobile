@@ -4,19 +4,19 @@ import Svg, { Path } from "react-native-svg";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 
 type DetailListItemProps = {
-  emoji: string;
+  icon: React.ComponentType<{ size: number; color: string; strokeWidth: number }>;
   title: string;
   subtitle: string;
   showBadge?: boolean;
 };
 
-export default function DetailListItem({ emoji, title, subtitle, showBadge }: DetailListItemProps) {
+export default function DetailListItem({ icon: Icon, title, subtitle, showBadge }: DetailListItemProps) {
   const c = useThemeColors();
   const styles = makeStyles(c);
   return (
     <Pressable style={styles.row}>
       <View style={styles.iconBox}>
-        <Text style={styles.emoji}>{emoji}</Text>
+        <Icon size={18} color={c.text} strokeWidth={2} />
       </View>
       <View style={styles.textWrap}>
         <Text style={styles.title}>{title}</Text>
@@ -34,7 +34,6 @@ function makeStyles(c: GfColors) {
   return StyleSheet.create({
     row: { flexDirection: "row", alignItems: "center", gap: 12, paddingVertical: 14, borderBottomWidth: 1, borderBottomColor: c.border },
     iconBox: { width: 40, height: 40, borderRadius: 12, backgroundColor: c.surface, alignItems: "center", justifyContent: "center" },
-    emoji: { fontSize: 18 },
     textWrap: { flex: 1 },
     title: { fontSize: 13.5, fontWeight: "700", color: c.text },
     subtitle: { fontSize: 11.5, color: c.textMuted, marginTop: 2 },

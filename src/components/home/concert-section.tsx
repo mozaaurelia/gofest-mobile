@@ -3,18 +3,20 @@ import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { Concert } from "../../constants/home-data";
 import ConcertCard from "./concert-card";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { useI18n } from "../../constants/i18n";
 
 type ConcertSectionProps = { title: string; data: Concert[] };
 
 export default function ConcertSection({ title, data }: ConcertSectionProps) {
   const c = useThemeColors();
   const styles = makeStyles(c);
+  const { t } = useI18n();
   return (
     <View style={styles.wrap}>
       <View style={styles.headRow}>
         <Text style={styles.title}>{title}</Text>
         <Pressable>
-          <Text style={styles.seeAll}>Lihat semua</Text>
+          <Text style={styles.seeAll}>{t("seeAll")}</Text>
         </Pressable>
       </View>
 
