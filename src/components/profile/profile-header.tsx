@@ -29,12 +29,6 @@ export default function ProfileHeader() {
   return (
     <View style={styles.wrap}>
       <LinearGradient colors={[gfColors.teal, gfColors.lime]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.gradient}>
-        <Pressable style={styles.menuButton}>
-          <Svg viewBox="0 0 24 24" width={20} height={20} fill="none">
-            <Path d="M4 7h16M4 12h16M4 17h10" stroke="#FFFFFF" strokeWidth={2} strokeLinecap="round" />
-          </Svg>
-        </Pressable>
-
         {/* Dekorasi bentuk geometris */}
         <Svg style={styles.deco1} width={26} height={26} viewBox="0 0 24 24" fill="none"><Path d="M12 3 21 19H3L12 3Z" stroke="#FFFFFF" strokeOpacity={0.35} strokeWidth={1.8} strokeLinejoin="round" /></Svg>
         <Svg style={styles.deco2} width={18} height={18} viewBox="0 0 24 24" fill="none"><Path d="M5 5l14 14M19 5 5 19" stroke="#FFFFFF" strokeOpacity={0.35} strokeWidth={2} strokeLinecap="round" /></Svg>
@@ -82,7 +76,6 @@ export default function ProfileHeader() {
 const styles = StyleSheet.create({
   wrap: { backgroundColor: gfColors.bg },
   gradient: { height: 150 },
-  menuButton: { position: "absolute", top: 50, left: 20, width: 36, height: 36, alignItems: "center", justifyContent: "center" },
   deco1: { position: "absolute", top: 30, right: 40 },
   deco2: { position: "absolute", top: 90, right: 90 },
   deco3: { position: "absolute", top: 45, right: 110, opacity: 0.7 },
