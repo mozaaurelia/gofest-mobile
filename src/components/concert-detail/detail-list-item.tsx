@@ -8,13 +8,14 @@ type DetailListItemProps = {
   title: string;
   subtitle: string;
   showBadge?: boolean;
+  onPress?: () => void;
 };
 
-export default function DetailListItem({ icon: Icon, title, subtitle, showBadge }: DetailListItemProps) {
+export default function DetailListItem({ icon: Icon, title, subtitle, showBadge, onPress }: DetailListItemProps) {
   const c = useThemeColors();
   const styles = makeStyles(c);
   return (
-    <Pressable style={styles.row}>
+    <Pressable style={styles.row} onPress={onPress}>
       <View style={styles.iconBox}>
         <Icon size={18} color={c.text} strokeWidth={2} />
       </View>
