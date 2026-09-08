@@ -32,7 +32,7 @@ export default function CategoryPills({ active, onChange }: CategoryPillsProps) 
           >
             <View style={styles.pillContent}>
               <Text style={[styles.pillText, isActive && styles.pillTextActive]}>{label}</Text>
-              {cat === "Populer" && <Flame size={13} color={isActive ? "#10151D" : c.textMuted} strokeWidth={2.2} />}
+              {cat === "Populer" && <Flame size={13} color={c.danger} strokeWidth={2.2} />}
             </View>
           </Pressable>
         );
