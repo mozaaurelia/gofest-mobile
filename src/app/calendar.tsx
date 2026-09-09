@@ -20,8 +20,13 @@ export default function CalendarScreen() {
   const deckRef = useRef<FlatList>(null);
 
   const filteredEvents = useMemo(() => {
-    if (category === "Semua") return CALENDAR_EVENTS;
-    return CALENDAR_EVENTS.filter((e) => e.category === category);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const todayISO = today.toISOString().slice(0, 10);
+
+    const upcomingOrCategory = CALENDAR_EVENTS.filter((e) => e.dateISO >= todayISO);
+    if (category === "Semua") return upcomingOrCategory;
+    return upcomingOrCategory.filter((e) => e.category === category);
   }, [category]);
 
   const uniqueDates = useMemo(() => getUniqueDates(filteredEvents), [filteredEvents]);
