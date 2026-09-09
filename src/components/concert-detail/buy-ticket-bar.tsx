@@ -26,6 +26,7 @@ export default function BuyTicketBar({ concert }: Props) {
       date: concert.date,
       time: concert.time,
       price: concert.price,
+      image: concert.image,
       from: concert.from,
       to: concert.to,
     });

@@ -1,3 +1,5 @@
+import type { ImageSourcePropType } from "react-native";
+
 export type SavedTicket = {
   id: string;
   concertId: string;
@@ -7,6 +9,7 @@ export type SavedTicket = {
   date: string;
   time: string;
   price: string;
+  image?: ImageSourcePropType;
   from: string;
   to: string;
 };
@@ -26,8 +29,8 @@ export type PurchasedTicket = {
 };
 
 export const SAVED_TICKETS: SavedTicket[] = [
-  { id: "s1", concertId: "f2", name: "Sunset Beats", venue: "Beach Club", city: "Bali", date: "28 Sep 2026", time: "18:00", price: "Rp 375K", from: "#8FD14F", to: "#7BC943" },
-  { id: "s2", concertId: "f3", name: "Djakarta Sound Fest", venue: "Istora Senayan", city: "Jakarta", date: "5 Okt 2026", time: "19:30", price: "Rp 420K", from: "#2FA8C0", to: "#5B6EE1" },
+  { id: "s1", concertId: "f2", name: "Sunset Beats", venue: "Beach Club", city: "Bali", date: "28 Sep 2026", time: "18:00", price: "Rp 375K", image: require("@/assets/images/so7.jpg"), from: "#8FD14F", to: "#7BC943" },
+  { id: "s2", concertId: "f3", name: "Djakarta Sound Fest", venue: "Istora Senayan", city: "Jakarta", date: "5 Okt 2026", time: "19:30", price: "Rp 420K", image: require("@/assets/images/tutorial-web.png"), from: "#2FA8C0", to: "#5B6EE1" },
 ];
 
 export const PURCHASED_TICKETS: PurchasedTicket[] = [

@@ -1,5 +1,6 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Image } from "expo-image";
 import { router } from "expo-router";
 import Svg, { Path } from "react-native-svg";
 import { SavedTicket } from "../../constants/tickets-data";
@@ -10,9 +11,13 @@ type SavedTicketCardProps = { ticket: SavedTicket };
 export default function SavedTicketCard({ ticket }: SavedTicketCardProps) {
   return (
     <Pressable style={styles.card} onPress={() => router.push(`/concert/${ticket.concertId}`)}>
-      <View style={[styles.thumb, { backgroundColor: ticket.from }]}>
-        <View style={[StyleSheet.absoluteFill, { backgroundColor: ticket.to, opacity: 0.4 }]} />
-      </View>
+      {ticket.image ? (
+        <Image source={ticket.image} style={styles.thumb} contentFit="cover" />
+      ) : (
+        <View style={[styles.thumb, { backgroundColor: ticket.from }]}>
+          <View style={[StyleSheet.absoluteFill, { backgroundColor: ticket.to, opacity: 0.4 }]} />
+        </View>
+      )}
 
       <View style={styles.info}>
         <Text style={styles.name} numberOfLines={1}>{ticket.name}</Text>
