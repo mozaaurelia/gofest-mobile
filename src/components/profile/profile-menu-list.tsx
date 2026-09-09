@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { router } from "expo-router";
 import { CircleHelp, FileText, LogOut, ShieldCheck, Star, Info } from "lucide-react-native";
 import ProfileMenuItem from "./profile-menu-item";
+import ProfileSocialFooter from "./profile-social-footer";
 import { gfColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
 import LanguagePicker from "./language";
@@ -30,6 +31,8 @@ export default function ProfileMenuList() {
       <View style={styles.group}>
         <ProfileMenuItem icon={LogOut} label="Keluar" danger onPress={() => router.replace("/auth/login")} />
       </View>
+
+      <ProfileSocialFooter />
     </View>
   );
 }
