@@ -61,7 +61,7 @@ function TabGlyph({ tab, active, mutedColor }: { tab: Tab; active: boolean; mute
     case "home":
       return <Svg {...common}><Path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-8Z" stroke={color} strokeWidth={1.8} strokeLinejoin="round" /></Svg>;
     case "explore":
-      return <Svg {...common}><Path d="M12 21s-6.5-5.9-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.1-6.5 11-6.5 11Z" stroke={color} strokeWidth={1.8} /><Path d="M12 8v8M8 12h8" stroke={color} strokeWidth={1.8} strokeLinecap="round" /></Svg>;
+      return <Svg {...common}><Path d="M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke={color} strokeWidth={1.8} /><Path d="M16 2v4M8 2v4" stroke={color} strokeWidth={1.8} strokeLinecap="round" /><Path d="M3 10h18" stroke={color} strokeWidth={1.8} strokeLinecap="round" /></Svg>;
     case "tickets":
       return <Svg {...common}><Path d="M4 8.5 8 4.5a2 2 0 0 1 2.8 0l8.7 8.7a2 2 0 0 1 0 2.8L15.5 20a2 2 0 0 1-2.8 0L4 11.3a2 2 0 0 1 0-2.8Z" stroke={color} strokeWidth={1.8} strokeLinejoin="round" /></Svg>;
     case "profile":

@@ -1,30 +1,34 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { router } from "expo-router";
+import { CircleHelp, FileText, LogOut, ShieldCheck, Star, Info } from "lucide-react-native";
 import ProfileMenuItem from "./profile-menu-item";
 import { gfColors } from "../../constants/gf-theme";
+import { useI18n } from "../../constants/i18n";
+import LanguagePicker from "./language";
 
 export default function ProfileMenuList() {
+  const { t } = useI18n();
   return (
     <View style={styles.wrap}>
       <View style={styles.group}>
-        <ProfileMenuItem emoji="🌐" label="Bahasa" />
+        <LanguagePicker />
         <Divider />
-        <ProfileMenuItem emoji="💬" label="Pusat Bantuan" />
+        <ProfileMenuItem icon={CircleHelp} label="Pusat Bantuan" />
       </View>
 
       <View style={styles.group}>
-        <ProfileMenuItem emoji="🎪" label="Tentang Go fest!" />
+        <ProfileMenuItem icon={Info} label={t("aboutTitle")} onPress={() => router.push("/about")} />
         <Divider />
-        <ProfileMenuItem emoji="📄" label="Syarat & Ketentuan" />
+        <ProfileMenuItem icon={FileText} label="Syarat & Ketentuan" />
         <Divider />
-        <ProfileMenuItem emoji="🛡️" label="Kebijakan Privasi" />
+        <ProfileMenuItem icon={ShieldCheck} label="Kebijakan Privasi" />
         <Divider />
-        <ProfileMenuItem emoji="⭐" label="Beri Rating" rightText="v1.0.0" />
+        <ProfileMenuItem icon={Star} label="Beri Rating" rightText="v1.0.0" />
       </View>
 
       <View style={styles.group}>
-        <ProfileMenuItem emoji="🚪" label="Keluar" danger onPress={() => router.replace("/auth/login")} />
+        <ProfileMenuItem icon={LogOut} label="Keluar" danger onPress={() => router.replace("/auth/login")} />
       </View>
     </View>
   );

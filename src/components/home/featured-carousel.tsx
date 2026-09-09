@@ -12,7 +12,7 @@ type FeaturedCarouselProps = { data: Concert[] };
 const SIDE_PADDING = 20;
 
 /**
- * FeaturedCarousel - banner auto-jalan sendiri (tiap 2 detik), ada
+ * FeaturedCarousel - banner auto-jalan sendiri (tiap 1 detik), ada
  * tombol panah kiri-kanan buat kontrol manual, dan dots di bawah.
  */
 export default function FeaturedCarousel({ data }: FeaturedCarouselProps) {
@@ -38,7 +38,7 @@ export default function FeaturedCarousel({ data }: FeaturedCarouselProps) {
         listRef.current?.scrollToIndex({ index: next, animated: true });
         return next;
       });
-    }, 2000);
+    }, 1000);
   }
 
   function stopAutoPlay() {
@@ -73,6 +73,10 @@ export default function FeaturedCarousel({ data }: FeaturedCarouselProps) {
         showsHorizontalScrollIndicator={false}
         snapToInterval={cardWidth}
         decelerationRate="fast"
+        getItemLayout={(_, index) => ({ length: cardWidth, offset: cardWidth * index, index })}
+        onScrollToIndexFailed={(info) => {
+          listRef.current?.scrollToOffset({ offset: info.index * cardWidth, animated: true });
+        }}
         contentContainerStyle={{ paddingHorizontal: SIDE_PADDING }}
         onMomentumScrollEnd={onMomentumScrollEnd}
         renderItem={({ item }) => <BannerSlide concert={item} width={cardWidth} />}
@@ -139,7 +143,7 @@ function makeStyles(c: GfColors) {
   return StyleSheet.create({
     wrap: { marginTop: 20 },
     card: { borderRadius: 22, overflow: "hidden", backgroundColor: c.surface, borderWidth: 1, borderColor: c.border },
-    poster: { height: 160 },
+    poster: { aspectRatio: 16 / 9 },
     posterImage: { width: "100%", height: "100%" },
     dateBadge: { position: "absolute", left: 14, top: 14, backgroundColor: "rgba(0,0,0,0.35)", borderRadius: 12, paddingHorizontal: 10, paddingVertical: 6, alignItems: "center" },
     dateDay: { fontSize: 16, fontWeight: "800", color: "#FFFFFF", lineHeight: 18 },
