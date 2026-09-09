@@ -1,4 +1,5 @@
 import type { ImageSourcePropType } from "react-native";
+import { CALENDAR_EVENTS } from "./calendar-data";
 
 export type Concert = {
   id: string;
@@ -67,5 +68,26 @@ export const ALL_CONCERTS: Concert[] = [
 export function getConcertById(id: string | string[] | undefined): Concert | undefined {
   if (!id) return undefined;
   const targetId = Array.isArray(id) ? id[0] : id;
-  return ALL_CONCERTS.find((c) => c.id === targetId);
+  return ALL_CONCERTS.find((c) => c.id === targetId) ?? getCalendarConcertById(targetId);
+}
+
+export function getCalendarConcertById(id: string | undefined): Concert | undefined {
+  if (!id) return undefined;
+  const event = CALENDAR_EVENTS.find((e) => e.id === id);
+  if (!event) return undefined;
+  return {
+    id: event.id,
+    image: event.image,
+    genre: event.category,
+    name: event.name,
+    venue: event.venue,
+    city: event.city,
+    date: `${event.day} ${event.month} 2026`,
+    day: event.day,
+    month: event.month,
+    time: event.time,
+    price: event.price,
+    from: event.from,
+    to: event.to,
+  };
 }
