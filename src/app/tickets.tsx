@@ -6,11 +6,13 @@ import TicketsTabs, { TicketsTab } from "../components/tickets/tickets-tabs";
 import SavedTicketCard from "../components/tickets/saved-ticket-card";
 import PurchasedTicketCard from "../components/tickets/purchased-ticket-card";
 import BottomNav from "../components/home/bottom-nav";
-import { SAVED_TICKETS, PURCHASED_TICKETS } from "../constants/tickets-data";
+import { PURCHASED_TICKETS } from "../constants/tickets-data";
 import { gfColors } from "../constants/gf-theme";
+import { useSavedTickets } from "../hooks/use-saved-tickets";
 
 export default function TicketsScreen() {
   const [tab, setTab] = useState<TicketsTab>("saved");
+  const { savedTickets } = useSavedTickets();
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -19,7 +21,7 @@ export default function TicketsScreen() {
 
       {tab === "saved" ? (
         <FlatList
-          data={SAVED_TICKETS}
+          data={savedTickets}
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.list}
           renderItem={({ item }) => <SavedTicketCard ticket={item} />}

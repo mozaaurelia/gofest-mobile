@@ -37,7 +37,7 @@ export default function ConcertDetailScreen() {
         </View>
       </ScrollView>
 
-      <BuyTicketBar />
+      <BuyTicketBar concert={concert} />
     </View>
   );
 }

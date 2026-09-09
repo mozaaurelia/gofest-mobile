@@ -31,8 +31,8 @@ export default function TicketsTabs({ active, onChange }: TicketsTabsProps) {
 }
 
 const styles = StyleSheet.create({
-  row: { flexDirection: "row", paddingHorizontal: 20, marginTop: 18, gap: 28, borderBottomWidth: 1, borderBottomColor: gfColors.border },
-  tab: { paddingBottom: 12 },
+  row: { flexDirection: "row", paddingHorizontal: 20, marginTop: 18, borderBottomWidth: 1, borderBottomColor: gfColors.border },
+  tab: { flex: 1, paddingBottom: 12, alignItems: "center" },
   label: { fontSize: 14, fontWeight: "600", color: gfColors.textMuted },
   labelActive: { color: gfColors.text, fontWeight: "800" },
   underline: { height: 2, marginTop: 10, borderRadius: 1, backgroundColor: "transparent" },

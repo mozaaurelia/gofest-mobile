@@ -3,6 +3,7 @@ import { Stack, useRouter, useRootNavigationState } from "expo-router";
 import AnimatedSplashScreen from "../components/animated-splash-screen";
 import { ThemeProvider } from "../constants/gf-theme";
 import { I18nProvider } from "../constants/i18n";
+import { SavedTicketsProvider } from "../hooks/use-saved-tickets";
 
 export default function RootLayout() {
   const [showSplash, setShowSplash] = useState(true);
@@ -20,10 +21,12 @@ export default function RootLayout() {
   return (
     <ThemeProvider>
       <I18nProvider>
-        <Stack screenOptions={{ headerShown: false }} />
-        {showSplash && (
-          <AnimatedSplashScreen onFinish={() => setShowSplash(false)} />
-        )}
+        <SavedTicketsProvider>
+          <Stack screenOptions={{ headerShown: false }} />
+          {showSplash && (
+            <AnimatedSplashScreen onFinish={() => setShowSplash(false)} />
+          )}
+        </SavedTicketsProvider>
       </I18nProvider>
     </ThemeProvider>
   );
