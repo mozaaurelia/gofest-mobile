@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import Svg, { Path } from "react-native-svg";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
+import { router } from "expo-router";
 
 export default function BuyTicketBar() {
   const c = useThemeColors();
@@ -11,7 +12,7 @@ export default function BuyTicketBar() {
   const { t } = useI18n();
   return (
     <View style={styles.wrap}>
-      <Pressable style={styles.bookmark}>
+      <Pressable style={styles.bookmark} onPress={() => router.push("/tickets")}>
         <Svg viewBox="0 0 24 24" width={18} height={18} fill="none">
           <Path d="M6 4h12v16l-6-4-6 4V4Z" stroke={c.text} strokeWidth={1.8} strokeLinejoin="round" />
         </Svg>

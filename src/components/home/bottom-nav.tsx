@@ -1,46 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import Svg, { Path } from "react-native-svg";
 import { router, usePathname } from "expo-router";
-import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import Svg, { Path } from "react-native-svg";
+import { gfColors } from "../../constants/gf-theme";
 
-const TABS = ["home", "calendar", "tickets", "profile"] as const;
-type Tab = (typeof TABS)[number];
+const TABS = [
+  { key: "home", href: "/home" },
+  { key: "calendar", href: "/calendar" },
+  { key: "tickets", href: "/tickets" },
+  { key: "profile", href: "/profile" },
+] as const;
 
 export default function BottomNav() {
-  const c = useThemeColors();
-  const styles = makeStyles(c);
   const pathname = usePathname();
-  const [pressed, setPressed] = useState<{ tab: Tab; pathname: string } | null>(null);
-
-  function routeTab(): Tab {
-    if (pathname.startsWith("/profile")) return "profile";
-    if (pathname.startsWith("/calendar")) return "calendar";
-    return "home";
-  }
-
-  function handlePress(tab: Tab) {
-    if (tab === "profile") {
-      router.navigate("/profile");
-    } else if (tab === "home") {
-      router.navigate("/home");
-    } else if (tab === "calendar") {
-      router.navigate("/calendar");
-    } else {
-      setPressed({ tab, pathname });
-    }
-  }
-
-  const active = pressed && pressed.pathname === pathname ? pressed.tab : routeTab();
 
   return (
     <View style={styles.wrap}>
       {TABS.map((tab) => {
-        const isActive = tab === active;
+        const isActive = pathname === tab.href;
         return (
-          <Pressable key={tab} onPress={() => handlePress(tab)} style={styles.item}>
+          <Pressable key={tab.key} onPress={() => router.push(tab.href)} style={styles.item}>
             <View style={[styles.iconWrap, isActive && styles.iconWrapActive]}>
-              <TabGlyph tab={tab} active={isActive} mutedColor={c.textMuted} />
+              <TabGlyph tab={tab.key} active={isActive} />
             </View>
           </Pressable>
         );
@@ -49,45 +30,32 @@ export default function BottomNav() {
   );
 }
 
-function TabGlyph({ tab, active, mutedColor }: { tab: Tab; active: boolean; mutedColor: string }) {
-  const color = active ? "#10151D" : mutedColor;
+function TabGlyph({ tab, active }: { tab: string; active: boolean }) {
+  const color = active ? "#10151D" : gfColors.textMuted;
   const common = { viewBox: "0 0 24 24", width: 20, height: 20, fill: "none" as const };
 
   switch (tab) {
     case "home":
       return <Svg {...common}><Path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-8Z" stroke={color} strokeWidth={1.8} strokeLinejoin="round" /></Svg>;
     case "calendar":
-      return <Svg {...common}><Path d="M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke={color} strokeWidth={1.8} /><Path d="M16 2v4M8 2v4" stroke={color} strokeWidth={1.8} strokeLinecap="round" /><Path d="M3 10h18" stroke={color} strokeWidth={1.8} strokeLinecap="round" /></Svg>;
+      return <Svg {...common}><Path d="M4 8.5h16M6 4v3M18 4v3M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z" stroke={color} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" /></Svg>;
     case "tickets":
       return <Svg {...common}><Path d="M4 8.5 8 4.5a2 2 0 0 1 2.8 0l8.7 8.7a2 2 0 0 1 0 2.8L15.5 20a2 2 0 0 1-2.8 0L4 11.3a2 2 0 0 1 0-2.8Z" stroke={color} strokeWidth={1.8} strokeLinejoin="round" /></Svg>;
     case "profile":
       return <Svg {...common}><Path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke={color} strokeWidth={1.8} /><Path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke={color} strokeWidth={1.8} strokeLinecap="round" /></Svg>;
+    default:
+      return null;
   }
 }
 
-function makeStyles(c: GfColors) {
-  return StyleSheet.create({
-    wrap: {
-      position: "absolute",
-      bottom: 24,
-      left: 24,
-      right: 24,
-      height: 64,
-      borderRadius: 32,
-      backgroundColor: c.surface,
-      borderWidth: 1,
-      borderColor: c.border,
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-around",
-      shadowColor: "#000",
-      shadowOpacity: 0.3,
-      shadowRadius: 16,
-      shadowOffset: { width: 0, height: 8 },
-      elevation: 10,
-    },
-    item: { flex: 1, alignItems: "center", justifyContent: "center" },
-    iconWrap: { width: 40, height: 40, borderRadius: 20, alignItems: "center", justifyContent: "center" },
-    iconWrapActive: { backgroundColor: c.text },
-  });
-}
+const styles = StyleSheet.create({
+  wrap: {
+    position: "absolute", bottom: 24, left: 24, right: 24, height: 64, borderRadius: 32,
+    backgroundColor: gfColors.surface, borderWidth: 1, borderColor: gfColors.border,
+    flexDirection: "row", alignItems: "center", justifyContent: "space-around",
+    shadowColor: "#000", shadowOpacity: 0.3, shadowRadius: 16, shadowOffset: { width: 0, height: 8 }, elevation: 10,
+  },
+  item: { flex: 1, alignItems: "center", justifyContent: "center" },
+  iconWrap: { width: 40, height: 40, borderRadius: 20, alignItems: "center", justifyContent: "center" },
+  iconWrapActive: { backgroundColor: gfColors.text },
+});
