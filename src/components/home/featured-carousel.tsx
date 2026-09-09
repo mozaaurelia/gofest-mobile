@@ -12,8 +12,9 @@ type FeaturedCarouselProps = { data: Concert[] };
 const SIDE_PADDING = 20;
 
 /**
- * FeaturedCarousel - banner auto-jalan sendiri (tiap 1 detik), ada
+ * FeaturedCarousel - banner auto-jalan sendiri (tiap 2 detik), ada
  * tombol panah kiri-kanan buat kontrol manual, dan dots di bawah.
+ * Auto-jalan berhenti sementara saat kursor hover di area carousel.
  */
 export default function FeaturedCarousel({ data }: FeaturedCarouselProps) {
   const c = useThemeColors();
@@ -38,7 +39,7 @@ export default function FeaturedCarousel({ data }: FeaturedCarouselProps) {
         listRef.current?.scrollToIndex({ index: next, animated: true });
         return next;
       });
-    }, 1000);
+    }, 2000);
   }
 
   function stopAutoPlay() {
@@ -62,8 +63,16 @@ export default function FeaturedCarousel({ data }: FeaturedCarouselProps) {
     startAutoPlay();
   }
 
+  function handleHoverIn() {
+    stopAutoPlay();
+  }
+
+  function handleHoverOut() {
+    startAutoPlay();
+  }
+
   return (
-    <View style={styles.wrap}>
+    <View style={styles.wrap} onPointerEnter={handleHoverIn} onPointerLeave={handleHoverOut}>
       <FlatList
         ref={listRef}
         data={data}

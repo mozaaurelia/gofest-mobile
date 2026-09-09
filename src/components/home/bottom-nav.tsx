@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { router, usePathname } from "expo-router";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 
-const TABS = ["home", "explore", "tickets", "profile"] as const;
+const TABS = ["home", "calendar", "tickets", "profile"] as const;
 type Tab = (typeof TABS)[number];
 
 export default function BottomNav() {
   const c = useThemeColors();
   const styles = makeStyles(c);
   const pathname = usePathname();
-  const [pressedTab, setPressedTab] = useState<Tab | null>(null);
-
-  useEffect(() => {
-    setPressedTab(null);
-  }, [pathname]);
+  const [pressed, setPressed] = useState<{ tab: Tab; pathname: string } | null>(null);
 
   function routeTab(): Tab {
     if (pathname.startsWith("/profile")) return "profile";
-    if (pathname.startsWith("/explore")) return "explore";
+    if (pathname.startsWith("/calendar")) return "calendar";
     return "home";
   }
 
@@ -28,14 +24,14 @@ export default function BottomNav() {
       router.navigate("/profile");
     } else if (tab === "home") {
       router.navigate("/home");
-    } else if (tab === "explore") {
-      router.navigate("/explore");
+    } else if (tab === "calendar") {
+      router.navigate("/calendar");
     } else {
-      setPressedTab(tab);
+      setPressed({ tab, pathname });
     }
   }
 
-  const active = pressedTab ?? routeTab();
+  const active = pressed && pressed.pathname === pathname ? pressed.tab : routeTab();
 
   return (
     <View style={styles.wrap}>
@@ -60,7 +56,7 @@ function TabGlyph({ tab, active, mutedColor }: { tab: Tab; active: boolean; mute
   switch (tab) {
     case "home":
       return <Svg {...common}><Path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-8Z" stroke={color} strokeWidth={1.8} strokeLinejoin="round" /></Svg>;
-    case "explore":
+    case "calendar":
       return <Svg {...common}><Path d="M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke={color} strokeWidth={1.8} /><Path d="M16 2v4M8 2v4" stroke={color} strokeWidth={1.8} strokeLinecap="round" /><Path d="M3 10h18" stroke={color} strokeWidth={1.8} strokeLinecap="round" /></Svg>;
     case "tickets":
       return <Svg {...common}><Path d="M4 8.5 8 4.5a2 2 0 0 1 2.8 0l8.7 8.7a2 2 0 0 1 0 2.8L15.5 20a2 2 0 0 1-2.8 0L4 11.3a2 2 0 0 1 0-2.8Z" stroke={color} strokeWidth={1.8} strokeLinejoin="round" /></Svg>;

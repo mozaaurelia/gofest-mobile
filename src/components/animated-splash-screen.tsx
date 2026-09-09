@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Animated, Easing, StyleSheet } from "react-native";
 import Svg, { Defs, RadialGradient, Stop, Rect } from "react-native-svg";
 import TicketIcon from "./ticket-icon";
@@ -11,14 +11,14 @@ type AnimatedSplashScreenProps = {
 export default function AnimatedSplashScreen({ onFinish }: AnimatedSplashScreenProps) {
   const c = useThemeColors();
   const styles = makeStyles(c);
-  const glowScale = useRef(new Animated.Value(1)).current;
-  const glowOpacity = useRef(new Animated.Value(0.25)).current;
-  const iconScale = useRef(new Animated.Value(0.7)).current;
-  const iconOpacity = useRef(new Animated.Value(0)).current;
-  const iconRotate = useRef(new Animated.Value(-10)).current;
-  const wordmarkOpacity = useRef(new Animated.Value(0)).current;
-  const wordmarkTranslateY = useRef(new Animated.Value(14)).current;
-  const containerOpacity = useRef(new Animated.Value(1)).current;
+  const [glowScale] = useState(() => new Animated.Value(1));
+  const [glowOpacity] = useState(() => new Animated.Value(0.25));
+  const [iconScale] = useState(() => new Animated.Value(0.7));
+  const [iconOpacity] = useState(() => new Animated.Value(0));
+  const [iconRotate] = useState(() => new Animated.Value(-10));
+  const [wordmarkOpacity] = useState(() => new Animated.Value(0));
+  const [wordmarkTranslateY] = useState(() => new Animated.Value(14));
+  const [containerOpacity] = useState(() => new Animated.Value(1));
 
   useEffect(() => {
     Animated.loop(
