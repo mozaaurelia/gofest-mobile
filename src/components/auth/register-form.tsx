@@ -6,6 +6,7 @@ import AuthInput from "./auth-input";
 import AuthSubmitButton from "./auth-submit-button";
 import SocialLoginRow from "./social-login-row";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 import { useI18n } from "../../constants/i18n";
 
 type Gender = "" | "male" | "female";
@@ -162,10 +163,10 @@ function makeStyles(c: GfColors) {
   return StyleSheet.create({
     wrap: { paddingHorizontal: 28, marginTop: 20 },
     greetingRow: { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6, marginBottom: 4 },
-    greeting: { fontSize: 20, fontWeight: "800", color: c.text },
-    subGreeting: { fontSize: 12.5, color: c.textMuted, textAlign: "center", marginBottom: 18 },
+    greeting: { ...Typography.h2, color: c.text },
+    subGreeting: { ...Typography.bodySmall, color: c.textMuted, textAlign: "center", marginBottom: 18 },
     fieldBlock: { marginBottom: 18 },
-    sectionLabel: { fontSize: 12.5, fontWeight: "700", color: c.text, marginBottom: 5 },
+    sectionLabel: { ...Typography.label, color: c.text, marginBottom: 5 },
     birthRow: { flexDirection: "row", gap: 10 },
     birthInputSmall: { flex: 1 },
     birthInputYear: { flex: 1.6 },
@@ -182,7 +183,7 @@ function makeStyles(c: GfColors) {
     },
     radioActive: { borderColor: c.teal },
     radioDot: { width: 10, height: 10, borderRadius: 5, backgroundColor: c.teal },
-    genderText: { fontSize: 13, fontWeight: "600", color: c.text },
-    fieldError: { fontSize: 11.5, color: "#F2545B", marginTop: 4 },
+    genderText: { ...Typography.bodyMedium, color: c.text },
+    fieldError: { ...Typography.caption, color: "#F2545B", marginTop: 4 },
   });
 }

@@ -11,6 +11,7 @@ import Animated, {
 } from "react-native-reanimated";
 import TicketIcon from "./ticket-icon";
 import { gfColors } from "../constants/gf-theme";
+import { Typography } from "../constants/theme";
 
 type AnimatedSplashScreenProps = {
   onFinish: () => void;
@@ -77,9 +78,7 @@ const styles = StyleSheet.create({
   },
   wordmark: {
     marginTop: 20,
-    fontSize: 26,
-    fontWeight: "800",
+    ...Typography.display,
     color: gfColors.text,
-    letterSpacing: 0.2,
   },
 });

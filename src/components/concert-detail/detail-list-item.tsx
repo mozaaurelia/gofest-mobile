@@ -2,6 +2,7 @@ import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type DetailListItemProps = {
   icon: React.ComponentType<{ size: number; color: string; strokeWidth: number }>;
@@ -36,8 +37,8 @@ function makeStyles(c: GfColors) {
     row: { flexDirection: "row", alignItems: "center", gap: 12, paddingVertical: 14, borderBottomWidth: 1, borderBottomColor: c.border },
     iconBox: { width: 40, height: 40, borderRadius: 12, backgroundColor: c.surface, alignItems: "center", justifyContent: "center" },
     textWrap: { flex: 1 },
-    title: { fontSize: 13.5, fontWeight: "700", color: c.text },
-    subtitle: { fontSize: 11.5, color: c.textMuted, marginTop: 2 },
+    title: { ...Typography.titleSmall, color: c.text },
+    subtitle: { ...Typography.caption, color: c.textMuted, marginTop: 2 },
     badge: { width: 8, height: 8, borderRadius: 4, backgroundColor: "#F2545B" },
   });
 }

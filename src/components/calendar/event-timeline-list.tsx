@@ -3,6 +3,7 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import { CalendarEvent } from "../../constants/calendar-data";
 import EventTimelineItem from "./event-timeline-item";
 import { gfColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type EventTimelineListProps = {
   events: CalendarEvent[];
@@ -53,9 +54,9 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   list: { flex: 1 },
   sectionHeader: { paddingHorizontal: 20, paddingTop: 12, paddingBottom: 16 },
-  sectionTitle: { fontSize: 18, fontWeight: "800", color: gfColors.text },
-  sectionSub: { fontSize: 12.5, color: gfColors.textMuted, marginTop: 4 },
+  sectionTitle: { ...Typography.h3, color: gfColors.text },
+  sectionSub: { ...Typography.bodySmall, color: gfColors.textMuted, marginTop: 4 },
   listContent: { paddingHorizontal: 20, paddingBottom: 120 },
   empty: { flex: 1, alignItems: "center", paddingTop: 80 },
-  emptyText: { fontSize: 13, color: gfColors.textMuted, textAlign: "center", paddingHorizontal: 40 },
+  emptyText: { ...Typography.body, color: gfColors.textMuted, textAlign: "center", paddingHorizontal: 40 },
 });

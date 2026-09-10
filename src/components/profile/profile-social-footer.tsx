@@ -2,6 +2,7 @@ import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Svg, { Circle, Path, Rect } from "react-native-svg";
 import { gfColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type ProfileSocialFooterProps = {
   onLinkPress?: (platform: string) => void;
@@ -96,8 +97,8 @@ function FacebookIcon() {
 
 const styles = StyleSheet.create({
   wrap: { alignItems: "center", paddingVertical: 26 },
-  title: { fontSize: 14, fontWeight: "800", color: gfColors.text },
-  subtitle: { fontSize: 11.5, color: gfColors.textMuted, marginTop: 4 },
+  title: { ...Typography.titleSmall, color: gfColors.text },
+  subtitle: { ...Typography.caption, color: gfColors.textMuted, marginTop: 4 },
   row: { flexDirection: "row", justifyContent: "center", gap: 14, marginTop: 18 },
   iconBtn: {
     width: 46,

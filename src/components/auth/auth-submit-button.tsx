@@ -2,6 +2,7 @@ import React from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useThemeColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type AuthSubmitButtonProps = { label: string; onPress?: () => void };
 
@@ -18,5 +19,5 @@ export default function AuthSubmitButton({ label, onPress }: AuthSubmitButtonPro
 
 const styles = StyleSheet.create({
   button: { height: 52, borderRadius: 16, alignItems: "center", justifyContent: "center" },
-  label: { fontSize: 15, fontWeight: "700", color: "#10151D" },
+  label: { ...Typography.button, color: "#10151D" },
 });

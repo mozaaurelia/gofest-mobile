@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import Svg, { Path } from "react-native-svg";
 import TicketIcon from "../ticket-icon";
 import { useI18n } from "../../constants/i18n";
+import { Typography } from "../../constants/theme";
 
 const VERSION = "v1.0.0";
 
@@ -61,8 +62,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 8 },
     elevation: 6,
   },
-  brand: { marginTop: 18, fontSize: 26, fontWeight: "800", color: "#FFFFFF", letterSpacing: 0.4 },
-  tagline: { marginTop: 6, fontSize: 13, color: "rgba(255,255,255,0.92)", textAlign: "center", maxWidth: 260 },
+  brand: { marginTop: 18, ...Typography.display, color: "#FFFFFF" },
+  tagline: { marginTop: 6, ...Typography.body, color: "rgba(255,255,255,0.92)", textAlign: "center", maxWidth: 260 },
   versionPill: {
     marginTop: 18,
     backgroundColor: "rgba(255,255,255,0.22)",
@@ -70,5 +71,5 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderRadius: 999,
   },
-  versionText: { fontSize: 11, fontWeight: "700", color: "#FFFFFF", letterSpacing: 0.6 },
+  versionText: { ...Typography.label, color: "#FFFFFF" },
 });

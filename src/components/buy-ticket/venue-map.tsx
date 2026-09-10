@@ -2,6 +2,7 @@ import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { VENUE_SECTIONS, VenueSection } from "../../constants/seat-data";
 import { gfColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type VenueMapProps = { onSelectSection: (section: VenueSection) => void };
 
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  stageText: { fontSize: 10, fontWeight: "700", color: gfColors.textMuted, letterSpacing: 1 },
+  stageText: { ...Typography.micro, color: gfColors.textMuted },
   section: { position: "absolute", borderRadius: 14, alignItems: "center", justifyContent: "center" },
-  sectionLabel: { fontSize: 12, fontWeight: "800", color: "#10151D" },
+  sectionLabel: { ...Typography.label, color: "#10151D" },
 });

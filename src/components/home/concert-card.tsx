@@ -4,6 +4,7 @@ import { Image } from "expo-image";
 import { router } from "expo-router";
 import { Concert } from "../../constants/home-data";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 
 type ConcertCardProps = { concert: Concert };
@@ -41,13 +42,13 @@ function makeStyles(c: GfColors) {
     poster: { height: 100 },
     posterImage: { width: "100%", height: "100%" },
     dateBadge: { position: "absolute", left: 8, top: 8, backgroundColor: "rgba(0,0,0,0.35)", borderRadius: 8, paddingHorizontal: 7, paddingVertical: 4, alignItems: "center" },
-    dateDay: { fontSize: 12, fontWeight: "800", color: "#FFFFFF", lineHeight: 13 },
-    dateMonth: { fontSize: 8, fontWeight: "600", color: "#FFFFFF", opacity: 0.85 },
+    dateDay: { ...Typography.titleSmall, color: "#FFFFFF" },
+    dateMonth: { ...Typography.micro, color: "#FFFFFF", opacity: 0.85 },
     body: { padding: 10 },
-    name: { fontSize: 13, fontWeight: "700", color: c.text },
-    meta: { fontSize: 10.5, color: c.textMuted, marginTop: 3 },
+    name: { ...Typography.titleSmall, color: c.text },
+    meta: { ...Typography.caption, color: c.textMuted, marginTop: 3 },
     footerRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 8 },
-    price: { fontSize: 12, fontWeight: "800", color: c.text },
-    time: { fontSize: 10, color: c.textMuted },
+    price: { ...Typography.price, color: c.text },
+    time: { ...Typography.micro, color: c.textMuted },
   });
 }

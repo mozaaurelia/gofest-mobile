@@ -4,6 +4,7 @@ import { router } from "expo-router";
 import Svg, { Rect } from "react-native-svg";
 import { PurchasedTicket } from "../../constants/tickets-data";
 import { gfColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type PurchasedTicketCardProps = { ticket: PurchasedTicket };
 
@@ -54,14 +55,14 @@ const styles = StyleSheet.create({
   card: { backgroundColor: gfColors.surface, borderRadius: 18, overflow: "hidden", borderWidth: 1, borderColor: gfColors.border, marginBottom: 16 },
   poster: { height: 90, padding: 12, alignItems: "flex-end" },
   categoryBadge: { backgroundColor: "rgba(0,0,0,0.35)", paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999 },
-  categoryText: { fontSize: 10, fontWeight: "700", color: "#FFFFFF" },
+  categoryText: { ...Typography.micro, color: "#FFFFFF" },
   perforationRow: { flexDirection: "row", alignItems: "center", marginTop: -1 },
   dash: { flex: 1, borderTopWidth: 2, borderStyle: "dashed", borderColor: gfColors.border },
   notch: { width: 16, height: 16, borderRadius: 8, backgroundColor: gfColors.bg, marginHorizontal: -8 },
   body: { flexDirection: "row", alignItems: "center", padding: 14, gap: 12 },
   textCol: { flex: 1 },
-  name: { fontSize: 14.5, fontWeight: "800", color: gfColors.text },
-  meta: { fontSize: 11.5, color: gfColors.textMuted, marginTop: 2 },
-  datetime: { fontSize: 11, color: gfColors.teal, marginTop: 4, fontWeight: "600" },
-  code: { fontSize: 10, color: gfColors.textMuted, marginTop: 6, letterSpacing: 0.5 },
+  name: { ...Typography.titleSmall, color: gfColors.text },
+  meta: { ...Typography.caption, color: gfColors.textMuted, marginTop: 2 },
+  datetime: { ...Typography.label, color: gfColors.teal, marginTop: 4 },
+  code: { ...Typography.ticketNumber, color: gfColors.textMuted, marginTop: 6 },
 });

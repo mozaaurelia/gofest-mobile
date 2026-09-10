@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { useThemeColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
+import { FontWeights, Typography } from "../../constants/theme";
 
 export default function PromoBanner() {
   const c = useThemeColors();
@@ -30,6 +31,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
   },
-  text: { fontSize: 12.5, color: "#FFFFFF" },
-  link: { color: "#F4A94A", fontWeight: "700" },
+  text: { ...Typography.bodySmall, color: "#FFFFFF" },
+  link: { color: "#F4A94A", fontWeight: FontWeights.bold },
 });

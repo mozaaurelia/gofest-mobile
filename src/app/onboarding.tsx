@@ -8,6 +8,7 @@ import OnboardingProgressBar from "../components/onboarding/onboarding-progress-
 import OnboardingNav from "../components/onboarding/onboarding-nav";
 import { GfColors, useThemeColors } from "../constants/gf-theme";
 import { useI18n } from "../constants/i18n";
+import { Typography } from "../constants/theme";
 
 export default function OnboardingScreen() {
   const c = useThemeColors();
@@ -80,7 +81,7 @@ function makeStyles(c: GfColors) {
     safe: { flex: 1, backgroundColor: c.bg },
     topRow: { flexDirection: "row", alignItems: "center", paddingTop: 12, paddingBottom: 4 },
     skipButton: { position: "absolute", right: 24, top: 8 },
-    skipText: { fontSize: 12.5, fontWeight: "600", color: c.textMuted },
+    skipText: { ...Typography.label, color: c.textMuted },
     list: { flex: 1 },
   });
 }

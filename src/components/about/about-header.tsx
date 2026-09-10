@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router";
 import Svg, { Path } from "react-native-svg";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type AboutHeaderProps = { title: string };
 
@@ -50,8 +51,7 @@ function makeStyles(c: GfColors) {
     title: {
       flex: 1,
       marginHorizontal: 12,
-      fontSize: 15,
-      fontWeight: "800",
+      ...Typography.h3,
       color: c.text,
       textAlign: "center",
     },

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Svg, { Rect, Path, Circle } from "react-native-svg";
 import { Concert } from "../../constants/home-data";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type DetailInfoBoxProps = { concert: Concert };
 
@@ -41,6 +42,6 @@ function makeStyles(c: GfColors) {
   return StyleSheet.create({
     box: { backgroundColor: c.surface, borderRadius: 16, padding: 16, marginHorizontal: 20, marginTop: 16, gap: 10 },
     row: { flexDirection: "row", alignItems: "center", gap: 10 },
-    text: { flex: 1, fontSize: 13, color: c.text },
+    text: { flex: 1, ...Typography.body, color: c.text },
   });
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Stack, useRouter, useRootNavigationState } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import AnimatedSplashScreen from "../components/animated-splash-screen";
+import { SavedTicketsProvider } from "../hooks/use-saved-tickets";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,9 +23,9 @@ export default function RootLayout() {
   }, [navigationState?.key, showSplash]);
 
   return (
-    <>
+    <SavedTicketsProvider>
       <Stack screenOptions={{ headerShown: false }} />
       {showSplash && <AnimatedSplashScreen onFinish={() => setShowSplash(false)} />}
-    </>
+    </SavedTicketsProvider>
   );
 }

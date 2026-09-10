@@ -9,6 +9,7 @@ import VenueMap from "../../components/buy-ticket/venue-map";
 import VenueLegend from "../../components/buy-ticket/venue-legend";
 import SeatSelectionModal from "../../components/buy-ticket/seat-selection-modal";
 import { gfColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 export default function SeatsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -58,8 +59,8 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: gfColors.bg },
   header: { flexDirection: "row", alignItems: "center", gap: 14, paddingHorizontal: 20, paddingTop: 12, paddingBottom: 8 },
   backArrow: { width: 32, height: 32 },
-  title: { fontSize: 14, fontWeight: "800", color: gfColors.text },
-  subtitle: { fontSize: 11, color: gfColors.textMuted, marginTop: 2 },
+  title: { ...Typography.titleSmall, color: gfColors.text },
+  subtitle: { ...Typography.caption, color: gfColors.textMuted, marginTop: 2 },
   summaryBar: { position: "absolute", bottom: 24, left: 20, right: 20, backgroundColor: gfColors.surface, borderRadius: 16, padding: 16, borderWidth: 1, borderColor: gfColors.border },
-  summaryText: { fontSize: 13, fontWeight: "700", color: gfColors.text, textAlign: "center" },
+  summaryText: { ...Typography.bodyMedium, color: gfColors.text, textAlign: "center" },
 });

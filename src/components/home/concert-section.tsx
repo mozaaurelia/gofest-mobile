@@ -4,6 +4,7 @@ import { Concert } from "../../constants/home-data";
 import ConcertCard from "./concert-card";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
+import { Typography } from "../../constants/theme";
 
 type ConcertSectionProps = { title: string; data: Concert[] };
 
@@ -36,8 +37,8 @@ function makeStyles(c: GfColors) {
   return StyleSheet.create({
     wrap: { marginTop: 22 },
     headRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 20, marginBottom: 12 },
-    title: { fontSize: 15.5, fontWeight: "800", color: c.text },
-    seeAll: { fontSize: 11.5, fontWeight: "600", color: c.teal },
+    title: { ...Typography.h3, color: c.text },
+    seeAll: { ...Typography.label, color: c.teal },
     list: { paddingHorizontal: 20, gap: 12 },
   });
 }

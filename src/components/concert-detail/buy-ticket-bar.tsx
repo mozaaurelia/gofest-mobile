@@ -6,6 +6,7 @@ import { GfColors, useThemeColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
 import { Concert } from "../../constants/home-data";
 import { useSavedTickets } from "../../hooks/use-saved-tickets";
+import { Typography } from "../../constants/theme";
 
 type Props = { concert: Concert };
 
@@ -64,6 +65,6 @@ function makeStyles(c: GfColors) {
     bookmark: { width: 52, height: 52, borderRadius: 16, borderWidth: 1, borderColor: c.border, alignItems: "center", justifyContent: "center" },
     bookmarkActive: { backgroundColor: c.text + "18" },
     button: { height: 52, borderRadius: 16, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8 },
-    buttonText: { fontSize: 14, fontWeight: "700", color: "#10151D" },
+    buttonText: { ...Typography.button, color: "#10151D" },
   });
 }

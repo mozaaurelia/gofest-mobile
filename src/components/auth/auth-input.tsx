@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, TextInput, TextInputProps, View, StyleProp, ViewStyle } from "react-native";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
+import { Typography } from "../../constants/theme";
 
 type AuthInputProps = TextInputProps & { label: string; isPassword?: boolean; error?: string; wrapperStyle?: StyleProp<ViewStyle> };
 
@@ -38,12 +39,12 @@ export default function AuthInput({ label, isPassword, error, wrapperStyle, ...r
 function makeStyles(c: GfColors) {
   return StyleSheet.create({
     wrap: { marginBottom: 14 },
-    label: { fontSize: 12.5, fontWeight: "700", color: c.text, marginBottom: 5 },
+    label: { ...Typography.label, color: c.text, marginBottom: 5 },
     inputRow: { flexDirection: "row", alignItems: "center", borderRadius: 12, borderWidth: 1, borderColor: c.border, backgroundColor: c.surface, paddingHorizontal: 14 },
     inputRowFocused: { borderColor: c.teal },
     inputRowError: { borderColor: c.danger },
-    input: { flex: 1, height: 46, fontSize: 13.5, color: c.text },
-    toggleText: { fontSize: 11, fontWeight: "600", color: c.teal },
-    errorText: { fontSize: 11.5, color: c.danger, marginTop: 5 },
+    input: { flex: 1, height: 46, ...Typography.input, color: c.text },
+    toggleText: { ...Typography.caption, color: c.teal },
+    errorText: { ...Typography.caption, color: c.danger, marginTop: 5 },
   });
 }

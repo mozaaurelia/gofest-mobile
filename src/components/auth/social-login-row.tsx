@@ -2,6 +2,7 @@ import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
+import { Typography } from "../../constants/theme";
 
 export default function SocialLoginRow() {
   const c = useThemeColors();
@@ -28,9 +29,9 @@ function makeStyles(c: GfColors) {
     wrap: { marginTop: 4, marginBottom: 8 },
     dividerRow: { flexDirection: "row", alignItems: "center", gap: 10, marginBottom: 14 },
     line: { flex: 1, height: 1, backgroundColor: c.border },
-    dividerText: { fontSize: 11, color: c.textMuted },
+    dividerText: { ...Typography.caption, color: c.textMuted },
     buttonsRow: { flexDirection: "row", justifyContent: "center", gap: 12 },
     socialBtn: { width: 44, height: 44, borderRadius: 12, borderWidth: 1, borderColor: c.border, backgroundColor: c.surface, alignItems: "center", justifyContent: "center" },
-    socialLabel: { fontSize: 15, fontWeight: "700", color: c.text },
+    socialLabel: { ...Typography.button, color: c.text },
   });
 }

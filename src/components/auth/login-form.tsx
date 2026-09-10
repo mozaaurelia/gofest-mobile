@@ -5,6 +5,7 @@ import AuthInput from "./auth-input";
 import AuthSubmitButton from "./auth-submit-button";
 import SocialLoginRow from "./social-login-row";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 import { useI18n } from "../../constants/i18n";
 
 export default function LoginForm() {
@@ -42,7 +43,7 @@ function makeStyles(c: GfColors) {
   return StyleSheet.create({
     wrap: { paddingHorizontal: 28, marginTop: 20 },
     greetingRow: { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6, marginBottom: 4 },
-    greeting: { fontSize: 20, fontWeight: "800", color: c.text },
-    subGreeting: { fontSize: 12.5, color: c.textMuted, textAlign: "center", marginBottom: 18 },
+    greeting: { ...Typography.h2, color: c.text },
+    subGreeting: { ...Typography.bodySmall, color: c.textMuted, textAlign: "center", marginBottom: 18 },
   });
 }

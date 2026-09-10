@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import Svg, { Path } from "react-native-svg";
 import { FILTER_CATEGORIES } from "../../constants/calendar-data";
 import { gfColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type FilterModalProps = {
   visible: boolean;
@@ -54,13 +55,13 @@ const styles = StyleSheet.create({
   overlay: { flex: 1, backgroundColor: "rgba(0,0,0,0.5)", justifyContent: "flex-end" },
   sheet: { backgroundColor: gfColors.bg, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 20, paddingBottom: 32 },
   header: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 18 },
-  title: { fontSize: 16, fontWeight: "800", color: gfColors.text },
+  title: { ...Typography.h3, color: gfColors.text },
   closeBtn: { width: 30, height: 30, borderRadius: 15, backgroundColor: gfColors.surface, alignItems: "center", justifyContent: "center" },
   chipsWrap: { flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: 24 },
   chip: { paddingHorizontal: 16, height: 38, borderRadius: 19, backgroundColor: gfColors.surface, alignItems: "center", justifyContent: "center" },
   chipActive: { backgroundColor: gfColors.text },
-  chipText: { fontSize: 12.5, fontWeight: "600", color: gfColors.textMuted },
+  chipText: { ...Typography.label, color: gfColors.textMuted },
   chipTextActive: { color: "#FFFFFF" },
   applyButton: { height: 52, borderRadius: 16, alignItems: "center", justifyContent: "center" },
-  applyText: { fontSize: 14, fontWeight: "700", color: "#10151D" },
+  applyText: { ...Typography.button, color: "#10151D" },
 });

@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
+import { Typography } from "../../constants/theme";
 import TicketIcon from "../ticket-icon";
 
 export default function AboutFooter() {
@@ -21,7 +22,7 @@ export default function AboutFooter() {
 function makeStyles(c: GfColors) {
   return StyleSheet.create({
     wrap: { alignItems: "center", paddingVertical: 28 },
-    footer: { fontSize: 12, color: c.textMuted, textAlign: "center", marginTop: 10, paddingHorizontal: 40 },
-    copyright: { fontSize: 10, color: c.textMuted, opacity: 0.7, marginTop: 6 },
+    footer: { ...Typography.bodySmall, color: c.textMuted, textAlign: "center", marginTop: 10, paddingHorizontal: 40 },
+    copyright: { ...Typography.micro, color: c.textMuted, opacity: 0.7, marginTop: 6 },
   });
 }

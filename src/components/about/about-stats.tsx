@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 import { TKey, useI18n } from "../../constants/i18n";
+import { Typography } from "../../constants/theme";
 
 type AboutStat = { valueKey: TKey; labelKey: TKey };
 
@@ -47,7 +48,7 @@ function makeStyles(c: GfColors) {
     },
     stat: { flex: 1, alignItems: "center" },
     statBorder: { borderRightWidth: 1, borderRightColor: c.border },
-    value: { fontSize: 20, fontWeight: "800", color: c.text },
-    label: { fontSize: 11, color: c.textMuted, marginTop: 4, textAlign: "center", paddingHorizontal: 6 },
+    value: { ...Typography.h2, color: c.text },
+    label: { ...Typography.caption, color: c.textMuted, marginTop: 4, textAlign: "center", paddingHorizontal: 6 },
   });
 }

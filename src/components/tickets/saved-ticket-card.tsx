@@ -5,6 +5,7 @@ import { router } from "expo-router";
 import Svg, { Path } from "react-native-svg";
 import { SavedTicket } from "../../constants/tickets-data";
 import { gfColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type SavedTicketCardProps = { ticket: SavedTicket };
 
@@ -37,8 +38,8 @@ const styles = StyleSheet.create({
   card: { flexDirection: "row", alignItems: "center", gap: 12, backgroundColor: gfColors.surface, borderRadius: 16, borderWidth: 1, borderColor: gfColors.border, padding: 12, marginBottom: 12 },
   thumb: { width: 56, height: 56, borderRadius: 12 },
   info: { flex: 1 },
-  name: { fontSize: 13.5, fontWeight: "700", color: gfColors.text },
-  meta: { fontSize: 11, color: gfColors.textMuted, marginTop: 2 },
-  datetime: { fontSize: 11, color: gfColors.teal, marginTop: 4, fontWeight: "600" },
-  price: { fontSize: 12.5, fontWeight: "800", color: gfColors.text, marginTop: 4 },
+  name: { ...Typography.titleSmall, color: gfColors.text },
+  meta: { ...Typography.caption, color: gfColors.textMuted, marginTop: 2 },
+  datetime: { ...Typography.label, color: gfColors.teal, marginTop: 4 },
+  price: { ...Typography.price, color: gfColors.text, marginTop: 4 },
 });

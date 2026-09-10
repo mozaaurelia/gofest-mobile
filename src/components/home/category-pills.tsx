@@ -4,6 +4,7 @@ import { Flame } from "lucide-react-native";
 import { CATEGORIES } from "../../constants/home-data";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
+import { Typography } from "../../constants/theme";
 
 type CategoryPillsProps = {
   active: string;
@@ -47,7 +48,7 @@ function makeStyles(c: GfColors) {
     pill: { paddingHorizontal: 16, height: 38, borderRadius: 19, backgroundColor: c.surface, alignItems: "center", justifyContent: "center" },
     pillActive: { backgroundColor: c.text },
     pillContent: { flexDirection: "row", alignItems: "center", gap: 4 },
-    pillText: { fontSize: 12.5, fontWeight: "600", color: c.textMuted },
+    pillText: { ...Typography.label, color: c.textMuted },
     pillTextActive: { color: "#FFFFFF" },
   });
 }

@@ -5,6 +5,7 @@ import ProfileHeader from "../components/profile/profile-header";
 import ProfileMenuList from "../components/profile/profile-menu-list";
 import BottomNav from "../components/home/bottom-nav";
 import { gfColors } from "../constants/gf-theme";
+import { Typography } from "../constants/theme";
 
 export default function ProfileScreen() {
   return (
@@ -23,5 +24,5 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: gfColors.bg },
   content: { paddingBottom: 120 },
-  pageTitle: { fontSize: 20, fontWeight: "800", color: gfColors.text, paddingHorizontal: 20, marginBottom: 12 },
+  pageTitle: { ...Typography.h2, color: gfColors.text, paddingHorizontal: 20, marginBottom: 12 },
 });

@@ -2,6 +2,7 @@ import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { gfColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type ProfileMenuItemProps = {
   icon: React.ComponentType<{ size: number; color: string; strokeWidth: number }>;
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   row: { flexDirection: "row", alignItems: "center", gap: 12, paddingVertical: 14 },
   iconBox: { width: 36, height: 36, borderRadius: 12, backgroundColor: gfColors.surface, alignItems: "center", justifyContent: "center" },
   iconBoxDanger: { backgroundColor: "rgba(242,84,91,0.12)" },
-  label: { flex: 1, fontSize: 13.5, fontWeight: "600", color: gfColors.text },
+  label: { flex: 1, ...Typography.bodyMedium, color: gfColors.text },
   labelDanger: { color: "#F2545B" },
-  rightText: { fontSize: 11.5, color: gfColors.textMuted, marginRight: 4 },
+  rightText: { ...Typography.caption, color: gfColors.textMuted, marginRight: 4 },
 });

@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { gfColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 export default function VenueLegend() {
   return (
@@ -26,5 +27,5 @@ const styles = StyleSheet.create({
   item: { flexDirection: "row", alignItems: "center", gap: 6 },
   dot: { width: 10, height: 10, borderRadius: 5 },
   dotOutline: { borderWidth: 1, borderColor: "#5A5A5C" },
-  label: { fontSize: 11, color: "#9A9A9E" },
+  label: { ...Typography.caption, color: gfColors.textMuted },
 });

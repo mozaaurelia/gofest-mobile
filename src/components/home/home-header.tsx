@@ -4,6 +4,7 @@ import Svg, { Circle, Path } from "react-native-svg";
 import { Hand, Moon, Sun } from "lucide-react-native";
 import { GfColors, useTheme, useThemeColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
+import { Typography } from "../../constants/theme";
 
 export default function HomeHeader() {
   const c = useThemeColors();
@@ -48,12 +49,12 @@ function makeStyles(c: GfColors) {
   return StyleSheet.create({
     row: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 20, paddingTop: 8 },
     greetingRow: { flexDirection: "row", alignItems: "center", gap: 4 },
-    greeting: { fontSize: 17, fontWeight: "800", color: c.text },
-    location: { fontSize: 12, color: c.textMuted, marginTop: 2 },
+    greeting: { ...Typography.title, color: c.text },
+    location: { ...Typography.caption, color: c.textMuted, marginTop: 2 },
     actions: { flexDirection: "row", alignItems: "center", gap: 10 },
     iconButton: { width: 40, height: 40, borderRadius: 20, backgroundColor: c.surface, alignItems: "center", justifyContent: "center" },
     dot: { position: "absolute", top: 9, right: 10, width: 6, height: 6, borderRadius: 3, backgroundColor: c.lime },
     avatar: { width: 40, height: 40, borderRadius: 20, backgroundColor: c.surface, borderWidth: 1, borderColor: c.border, alignItems: "center", justifyContent: "center" },
-    avatarLabel: { fontSize: 14, fontWeight: "700", color: c.text },
+    avatarLabel: { ...Typography.bodyMedium, color: c.text },
   });
 }

@@ -4,6 +4,7 @@ import { Image } from "expo-image";
 import { router } from "expo-router";
 import { CalendarEvent } from "../../constants/calendar-data";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type EventTimelineItemProps = {
   event: CalendarEvent;
@@ -84,9 +85,9 @@ function makeStyles(c: GfColors) {
       zIndex: 1,
     },
     badgeFiller: { height: 8 },
-    badgeMonth: { fontSize: 10, fontWeight: "700", color: "#FFFFFF", textTransform: "uppercase" },
-    badgeDay: { fontSize: 20, fontWeight: "800", color: "#FFFFFF", lineHeight: 24 },
-    badgeWeekday: { fontSize: 10, fontWeight: "700", color: "#FFFFFF" },
+    badgeMonth: { ...Typography.micro, color: "#FFFFFF", textTransform: "uppercase" },
+    badgeDay: { ...Typography.h2, color: "#FFFFFF" },
+    badgeWeekday: { ...Typography.micro, color: "#FFFFFF" },
     card: {
       flex: 1,
       marginLeft: 12,
@@ -108,12 +109,12 @@ function makeStyles(c: GfColors) {
       paddingHorizontal: 8,
       paddingVertical: 4,
     },
-    categoryText: { fontSize: 9, fontWeight: "700", color: "#FFFFFF", letterSpacing: 0.3 },
+    categoryText: { ...Typography.micro, color: "#FFFFFF" },
     body: { padding: 12 },
-    name: { fontSize: 14, fontWeight: "700", color: c.text },
-    meta: { fontSize: 11, color: c.textMuted, marginTop: 3 },
+    name: { ...Typography.titleSmall, color: c.text },
+    meta: { ...Typography.caption, color: c.textMuted, marginTop: 3 },
     footerRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 8 },
-    price: { fontSize: 13, fontWeight: "800", color: c.text },
-    time: { fontSize: 10.5, color: c.textMuted },
+    price: { ...Typography.price, color: c.text },
+    time: { ...Typography.caption, color: c.textMuted },
   });
 }

@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import * as ImagePicker from "expo-image-picker";
 import Svg, { Path, Rect } from "react-native-svg";
 import { gfColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 export default function ProfileHeader() {
   const [avatarUri, setAvatarUri] = useState<string | null>(null);
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
   avatarWrap: { marginTop: -44 },
   avatar: { width: 88, height: 88, borderRadius: 44, borderWidth: 4, borderColor: gfColors.bg },
   avatarPlaceholder: { backgroundColor: gfColors.surface, alignItems: "center", justifyContent: "center" },
-  avatarInitial: { fontSize: 30, fontWeight: "800", color: gfColors.text },
+  avatarInitial: { ...Typography.display, color: gfColors.text },
   editBadge: {
     position: "absolute",
     right: 2,
@@ -106,11 +107,10 @@ const styles = StyleSheet.create({
     borderColor: gfColors.bg,
   },
   nameRow: { flexDirection: "row", alignItems: "center", gap: 8, marginTop: 12 },
-  name: { fontSize: 17, fontWeight: "800", color: gfColors.text },
+  name: { ...Typography.title, color: gfColors.text },
   nameInput: {
     marginTop: 12,
-    fontSize: 17,
-    fontWeight: "800",
+    ...Typography.title,
     color: gfColors.text,
     borderBottomWidth: 1,
     borderBottomColor: gfColors.teal,

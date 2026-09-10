@@ -5,6 +5,7 @@ import Svg, { Path } from "react-native-svg";
 import { PRICE_TIERS, Seat, VenueSection } from "../../constants/seat-data";
 import SeatGrid from "./seat-grid";
 import { gfColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type SeatSelectionModalProps = {
   section: VenueSection | null;
@@ -88,11 +89,11 @@ const styles = StyleSheet.create({
   sheet: { height: "88%", backgroundColor: gfColors.bg, borderTopLeftRadius: 24, borderTopRightRadius: 24, overflow: "hidden" },
   header: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 16, paddingTop: 18, paddingBottom: 10 },
   closeBtn: { width: 32, height: 32, borderRadius: 16, backgroundColor: gfColors.surface, alignItems: "center", justifyContent: "center" },
-  title: { fontSize: 15, fontWeight: "800", color: gfColors.text },
+  title: { ...Typography.h3, color: gfColors.text },
   tierLegend: { flexDirection: "row", justifyContent: "center", gap: 16, paddingBottom: 12, flexWrap: "wrap" },
   tierItem: { flexDirection: "row", alignItems: "center", gap: 6 },
   tierDot: { width: 10, height: 10, borderRadius: 3 },
-  tierLabel: { fontSize: 10.5, color: gfColors.textMuted },
+  tierLabel: { ...Typography.caption, color: gfColors.textMuted },
   footer: {
     flexDirection: "row",
     alignItems: "center",
@@ -104,8 +105,8 @@ const styles = StyleSheet.create({
     borderTopColor: gfColors.border,
     backgroundColor: gfColors.surface,
   },
-  footerLabel: { fontSize: 11, color: gfColors.textMuted },
-  footerPrice: { fontSize: 16, fontWeight: "800", color: gfColors.text, marginTop: 2 },
+  footerLabel: { ...Typography.caption, color: gfColors.textMuted },
+  footerPrice: { ...Typography.priceLarge, color: gfColors.text, marginTop: 2 },
   payButton: { paddingHorizontal: 32, height: 48, borderRadius: 14, alignItems: "center", justifyContent: "center" },
-  payText: { fontSize: 14, fontWeight: "700", color: "#10151D" },
+  payText: { ...Typography.button, color: "#10151D" },
 });

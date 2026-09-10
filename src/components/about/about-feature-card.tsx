@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type AboutFeatureCardProps = {
   icon: React.ComponentType<{ size: number; color: string; strokeWidth: number }>;
@@ -47,7 +48,7 @@ function makeStyles(c: GfColors) {
       justifyContent: "center",
       marginBottom: 12,
     },
-    title: { fontSize: 13, fontWeight: "800", color: c.text },
-    subtitle: { fontSize: 11.5, lineHeight: 17, color: c.textMuted, marginTop: 4 },
+    title: { ...Typography.titleSmall, color: c.text },
+    subtitle: { ...Typography.caption, lineHeight: 15, color: c.textMuted, marginTop: 4 },
   });
 }

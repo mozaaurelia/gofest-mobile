@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Pressable, StyleSheet, Text } from "react-native";
 import { GfColors, useThemeColors } from "../../../constants/gf-theme";
 import { LANGS, useI18n } from "../../../constants/i18n";
+import { Typography } from "../../../constants/theme";
 import LanguagePickerOption from "./language-picker-option";
 
 type LanguagePickerModalProps = {
@@ -32,6 +33,6 @@ function makeStyles(c: GfColors) {
   return StyleSheet.create({
     backdrop: { flex: 1, backgroundColor: "rgba(0,0,0,0.5)", alignItems: "center", justifyContent: "center" },
     sheet: { width: "80%", backgroundColor: c.surface, borderRadius: 18, padding: 18 },
-    sheetTitle: { fontSize: 15, fontWeight: "800", color: c.text, marginBottom: 10 },
+    sheetTitle: { ...Typography.h3, color: c.text, marginBottom: 10 },
   });
 }

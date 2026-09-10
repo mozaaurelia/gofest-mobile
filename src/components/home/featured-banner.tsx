@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 import { Concert } from "../../constants/home-data";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
+import { Typography } from "../../constants/theme";
 
 type FeaturedBannerProps = { concert: Concert };
 
@@ -46,15 +47,15 @@ function makeStyles(c: GfColors) {
     poster: { height: 160 },
     posterImage: { width: "100%", height: "100%" },
     dateBadge: { position: "absolute", left: 14, top: 14, backgroundColor: "rgba(0,0,0,0.35)", borderRadius: 12, paddingHorizontal: 10, paddingVertical: 6, alignItems: "center" },
-    dateDay: { fontSize: 16, fontWeight: "800", color: "#FFFFFF", lineHeight: 18 },
-    dateMonth: { fontSize: 10, fontWeight: "600", color: "#FFFFFF", opacity: 0.85 },
+    dateDay: { ...Typography.title, color: "#FFFFFF" },
+    dateMonth: { ...Typography.micro, color: "#FFFFFF", opacity: 0.85 },
     info: { padding: 16 },
-    name: { fontSize: 17, fontWeight: "800", color: c.text },
-    meta: { fontSize: 12, color: c.textMuted, marginTop: 3 },
+    name: { ...Typography.title, color: c.text },
+    meta: { ...Typography.caption, color: c.textMuted, marginTop: 3 },
     footerRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 14 },
-    priceLabel: { fontSize: 10, color: c.textMuted },
-    price: { fontSize: 15, fontWeight: "800", color: c.text, marginTop: 2 },
+    priceLabel: { ...Typography.caption, color: c.textMuted },
+    price: { ...Typography.price, color: c.text, marginTop: 2 },
     cta: { backgroundColor: c.text, paddingHorizontal: 18, height: 42, borderRadius: 12, alignItems: "center", justifyContent: "center" },
-    ctaText: { fontSize: 12.5, fontWeight: "700", color: "#FFFFFF" },
+    ctaText: { ...Typography.buttonSmall, color: "#FFFFFF" },
   });
 }

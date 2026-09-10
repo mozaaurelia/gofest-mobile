@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import Svg, { Path } from "react-native-svg";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
+import { Typography } from "../../constants/theme";
 
 type OnboardingNavProps = { onBack: () => void; onNext: () => void; showBack: boolean; isLastStep: boolean };
 
@@ -44,6 +45,6 @@ function makeStyles(c: GfColors) {
     backButton: { width: 48, height: 48, borderRadius: 24, borderWidth: 1, borderColor: c.border, alignItems: "center", justifyContent: "center" },
     nextCircle: { width: 56, height: 56, borderRadius: 28, alignItems: "center", justifyContent: "center" },
     nextPill: { height: 52, paddingHorizontal: 28, borderRadius: 26, alignItems: "center", justifyContent: "center" },
-    nextLabel: { fontSize: 14, fontWeight: "700", color: "#10151D" },
+    nextLabel: { ...Typography.button, color: "#10151D" },
   });
 }

@@ -4,6 +4,7 @@ import Svg, { Path } from "react-native-svg";
 import { Check, Languages } from "lucide-react-native";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 import { LANGS, useI18n } from "../../constants/i18n";
+import { Typography } from "../../constants/theme";
 
 export default function HomeSearchBar() {
   const c = useThemeColors();
@@ -73,13 +74,13 @@ function makeStyles(c: GfColors) {
   return StyleSheet.create({
     row: { flexDirection: "row", alignItems: "center", gap: 10, paddingHorizontal: 20, marginTop: 18 },
     searchBar: { flex: 1, flexDirection: "row", alignItems: "center", gap: 8, backgroundColor: c.surface, borderRadius: 14, paddingHorizontal: 14, height: 46 },
-    input: { flex: 1, fontSize: 13.5, color: c.text },
+    input: { flex: 1, ...Typography.input, color: c.text },
     langButton: { width: 46, height: 46, borderRadius: 14, backgroundColor: c.surface, alignItems: "center", justifyContent: "center" },
     backdrop: { flex: 1, backgroundColor: "rgba(0,0,0,0.5)", alignItems: "center", justifyContent: "center" },
     sheet: { width: "80%", backgroundColor: c.surface, borderRadius: 18, padding: 18 },
-    sheetTitle: { fontSize: 15, fontWeight: "800", color: c.text, marginBottom: 10 },
+    sheetTitle: { ...Typography.h3, color: c.text, marginBottom: 10 },
     langOption: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingVertical: 14, paddingHorizontal: 4, borderBottomWidth: 1, borderBottomColor: c.border },
-    langLabel: { fontSize: 14, color: c.text },
-    langLabelActive: { fontWeight: "700" },
+    langLabel: { ...Typography.body, color: c.text },
+    langLabelActive: { ...Typography.bodyMedium },
   });
 }

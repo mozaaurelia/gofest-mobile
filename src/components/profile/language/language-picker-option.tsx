@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, Text } from "react-native";
 import { Check } from "lucide-react-native";
 import { GfColors, useThemeColors } from "../../../constants/gf-theme";
 import { AppLang, useI18n } from "../../../constants/i18n";
+import { FontWeights, Typography } from "../../../constants/theme";
 
 type LanguagePickerOptionProps = {
   value: AppLang;
@@ -41,7 +42,7 @@ function makeStyles(c: GfColors) {
       borderBottomWidth: 1,
       borderBottomColor: c.border,
     },
-    label: { fontSize: 14, color: c.text },
-    labelActive: { fontWeight: "700" },
+    label: { ...Typography.body, color: c.text },
+    labelActive: { fontWeight: FontWeights.bold },
   });
 }

@@ -61,5 +61,54 @@ export const Spacing = {
   six: 64,
 } as const;
 
+/**
+ * Font weight scale for the whole app.
+ * Basier Circle only ships Regular / Medium / SemiBold / Bold —
+ * we stay within these four so the app feels cohesive, not scattered.
+ */
+export const FontWeights = {
+  regular: "400",
+  medium: "500",
+  semibold: "600",
+  bold: "700",
+} as const;
+
+/**
+ * Typography system — single source of truth for every text style.
+ * Import { Typography } and spread it into a style: { ...Typography.h2, color: c.text }
+ *
+ * Fallback font: system font closest to Basier Circle.
+ * iOS renders SF Pro; enabling the "Rounded" system design or bundling a
+ * custom font (e.g. Basier Circle) can be swapped in by changing `fontFamily`
+ * below in one place.
+ */
+const fontFamily = Platform.select({
+  ios: "System",
+  web: "var(--font-display)",
+  default: "sans-serif",
+}) as string;
+
+export const Typography = {
+  display: { fontFamily, fontSize: 28, lineHeight: 34, fontWeight: FontWeights.bold, letterSpacing: -0.3 },
+  h1: { fontFamily, fontSize: 24, lineHeight: 30, fontWeight: FontWeights.bold, letterSpacing: -0.2 },
+  h2: { fontFamily, fontSize: 20, lineHeight: 26, fontWeight: FontWeights.bold, letterSpacing: -0.2 },
+  h3: { fontFamily, fontSize: 18, lineHeight: 24, fontWeight: FontWeights.semibold, letterSpacing: -0.2 },
+  title: { fontFamily, fontSize: 17, lineHeight: 22, fontWeight: FontWeights.bold },
+  titleSmall: { fontFamily, fontSize: 14, lineHeight: 19, fontWeight: FontWeights.semibold },
+  body: { fontFamily, fontSize: 14, lineHeight: 20, fontWeight: FontWeights.regular },
+  bodyMedium: { fontFamily, fontSize: 14, lineHeight: 20, fontWeight: FontWeights.medium },
+  bodySmall: { fontFamily, fontSize: 13, lineHeight: 18, fontWeight: FontWeights.regular },
+  label: { fontFamily, fontSize: 12, lineHeight: 16, fontWeight: FontWeights.medium },
+  caption: { fontFamily, fontSize: 11, lineHeight: 15, fontWeight: FontWeights.regular },
+  micro: { fontFamily, fontSize: 10, lineHeight: 13, fontWeight: FontWeights.medium },
+  input: { fontFamily, fontSize: 14, lineHeight: 20, fontWeight: FontWeights.regular },
+  button: { fontFamily, fontSize: 15, lineHeight: 20, fontWeight: FontWeights.semibold },
+  buttonSmall: { fontFamily, fontSize: 13, lineHeight: 18, fontWeight: FontWeights.semibold },
+  tab: { fontFamily, fontSize: 13, lineHeight: 18, fontWeight: FontWeights.semibold },
+  price: { fontFamily, fontSize: 15, lineHeight: 20, fontWeight: FontWeights.bold, letterSpacing: -0.2 },
+  priceLarge: { fontFamily, fontSize: 18, lineHeight: 24, fontWeight: FontWeights.bold, letterSpacing: -0.2 },
+  ticketNumber: { fontFamily, fontSize: 12, lineHeight: 16, fontWeight: FontWeights.semibold, letterSpacing: 0.5 },
+} as const;
+
 export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
 export const MaxContentWidth = 800;

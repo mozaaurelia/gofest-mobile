@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
+import { Typography } from "../../constants/theme";
 
 export default function AboutDescription() {
   const c = useThemeColors();
@@ -20,7 +21,7 @@ export default function AboutDescription() {
 function makeStyles(c: GfColors) {
   return StyleSheet.create({
     section: { paddingHorizontal: 20, marginTop: 24 },
-    title: { fontSize: 17, fontWeight: "800", color: c.text, marginBottom: 10 },
-    paragraph: { fontSize: 13, lineHeight: 21, color: c.textMuted, marginBottom: 10 },
+    title: { ...Typography.h3, color: c.text, marginBottom: 10 },
+    paragraph: { ...Typography.body, color: c.textMuted, marginBottom: 10 },
   });
 }

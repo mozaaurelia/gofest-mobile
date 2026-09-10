@@ -2,6 +2,7 @@ import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router";
 import Svg, { Path, Circle } from "react-native-svg";
+import { Typography } from "../../constants/theme";
 
 type DetailHeaderProps = { title: string };
 
@@ -42,5 +43,5 @@ const styles = StyleSheet.create({
     paddingTop: 8,
   },
   iconButton: { width: 38, height: 38, borderRadius: 19, backgroundColor: "rgba(0,0,0,0.4)", alignItems: "center", justifyContent: "center" },
-  title: { flex: 1, marginHorizontal: 12, fontSize: 13.5, fontWeight: "700", color: "#FFFFFF", textAlign: "center" },
+  title: { flex: 1, marginHorizontal: 12, ...Typography.titleSmall, color: "#FFFFFF", textAlign: "center" },
 });
