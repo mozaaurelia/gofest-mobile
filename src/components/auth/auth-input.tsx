@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Pressable, StyleSheet, Text, TextInput, TextInputProps, View } from "react-native";
+import { Pressable, StyleSheet, Text, TextInput, TextInputProps, View, StyleProp, ViewStyle } from "react-native";
 import { GfColors, useThemeColors } from "../../constants/gf-theme";
 import { useI18n } from "../../constants/i18n";
 
-type AuthInputProps = TextInputProps & { label: string; isPassword?: boolean; error?: string };
+type AuthInputProps = TextInputProps & { label: string; isPassword?: boolean; error?: string; wrapperStyle?: StyleProp<ViewStyle> };
 
-export default function AuthInput({ label, isPassword, error, ...rest }: AuthInputProps) {
+export default function AuthInput({ label, isPassword, error, wrapperStyle, ...rest }: AuthInputProps) {
   const c = useThemeColors();
   const styles = makeStyles(c);
   const { t } = useI18n();
@@ -13,7 +13,7 @@ export default function AuthInput({ label, isPassword, error, ...rest }: AuthInp
   const [secure, setSecure] = useState(!!isPassword);
 
   return (
-    <View style={styles.wrap}>
+    <View style={[styles.wrap, wrapperStyle]}>
       <Text style={styles.label}>{label}</Text>
       <View style={[styles.inputRow, focused && styles.inputRowFocused, error && styles.inputRowError]}>
         <TextInput

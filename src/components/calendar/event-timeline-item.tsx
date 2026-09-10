@@ -84,9 +84,9 @@ function makeStyles(c: GfColors) {
       zIndex: 1,
     },
     badgeFiller: { height: 8 },
-    badgeMonth: { fontSize: 10, fontWeight: "700", color: "#10151D", textTransform: "uppercase" },
-    badgeDay: { fontSize: 20, fontWeight: "800", color: "#10151D", lineHeight: 24 },
-    badgeWeekday: { fontSize: 10, fontWeight: "700", color: "#10151D" },
+    badgeMonth: { fontSize: 10, fontWeight: "700", color: "#FFFFFF", textTransform: "uppercase" },
+    badgeDay: { fontSize: 20, fontWeight: "800", color: "#FFFFFF", lineHeight: 24 },
+    badgeWeekday: { fontSize: 10, fontWeight: "700", color: "#FFFFFF" },
     card: {
       flex: 1,
       marginLeft: 12,

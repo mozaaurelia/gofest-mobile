@@ -48,6 +48,6 @@ function makeStyles(c: GfColors) {
     pillActive: { backgroundColor: c.text },
     pillContent: { flexDirection: "row", alignItems: "center", gap: 4 },
     pillText: { fontSize: 12.5, fontWeight: "600", color: c.textMuted },
-    pillTextActive: { color: "#10151D" },
+    pillTextActive: { color: "#FFFFFF" },
   });
 }

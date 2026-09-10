@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   chip: { paddingHorizontal: 16, height: 38, borderRadius: 19, backgroundColor: gfColors.surface, alignItems: "center", justifyContent: "center" },
   chipActive: { backgroundColor: gfColors.text },
   chipText: { fontSize: 12.5, fontWeight: "600", color: gfColors.textMuted },
-  chipTextActive: { color: "#10151D" },
+  chipTextActive: { color: "#FFFFFF" },
   applyButton: { height: 52, borderRadius: 16, alignItems: "center", justifyContent: "center" },
   applyText: { fontSize: 14, fontWeight: "700", color: "#10151D" },
 });

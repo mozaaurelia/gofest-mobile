@@ -164,7 +164,7 @@ function makeStyles(c: GfColors) {
     priceLabel: { fontSize: 10, color: c.textMuted },
     price: { fontSize: 15, fontWeight: "800", color: c.text, marginTop: 2 },
     cta: { backgroundColor: c.text, paddingHorizontal: 18, height: 42, borderRadius: 12, alignItems: "center", justifyContent: "center" },
-    ctaText: { fontSize: 12.5, fontWeight: "700", color: "#10151D" },
+    ctaText: { fontSize: 12.5, fontWeight: "700", color: "#FFFFFF" },
     arrow: {
       position: "absolute",
       top: 65,

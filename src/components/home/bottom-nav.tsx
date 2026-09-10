@@ -31,7 +31,7 @@ export default function BottomNav() {
 }
 
 function TabGlyph({ tab, active }: { tab: string; active: boolean }) {
-  const color = active ? "#10151D" : gfColors.textMuted;
+  const color = active ? "#FFFFFF" : gfColors.textMuted;
   const common = { viewBox: "0 0 24 24", width: 20, height: 20, fill: "none" as const };
 
   switch (tab) {

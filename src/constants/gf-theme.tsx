@@ -1,14 +1,14 @@
 import { useCallback, useState } from "react";
 
 export const gfColors = {
-  bg: "#1B222D",
-  surface: "#242C3A",
-  border: "#333D4D",
+  bg: "#FFFFFF",
+  surface: "#F7F9FC",
+  border: "#E5EAF1",
   teal: "#2FA8C0",
   lime: "#8FD14F",
   green: "#7BC943",
-  text: "#FFFFFF",
-  textMuted: "#A7B0BD",
+  text: "#10151D",
+  textMuted: "#8A94A6",
 };
 
 export type GfColors = typeof gfColors;
