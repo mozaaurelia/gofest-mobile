@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Stack, useRouter, useRootNavigationState } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
 import AnimatedSplashScreen from "../components/animated-splash-screen";
-import { ThemeProvider } from "../constants/gf-theme";
-import { I18nProvider } from "../constants/i18n";
-import { SavedTicketsProvider } from "../hooks/use-saved-tickets";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [showSplash, setShowSplash] = useState(true);
@@ -11,7 +11,10 @@ export default function RootLayout() {
   const navigationState = useRootNavigationState();
 
   useEffect(() => {
-    // Tunggu sampai navigator beneran siap sebelum navigasi
+    SplashScreen.hideAsync(); // native splash hilang duluan, secepatnya
+  }, []);
+
+  useEffect(() => {
     if (!navigationState?.key) return;
     if (!showSplash) {
       router.replace("/onboarding");
@@ -19,15 +22,9 @@ export default function RootLayout() {
   }, [navigationState?.key, showSplash]);
 
   return (
-    <ThemeProvider>
-      <I18nProvider>
-        <SavedTicketsProvider>
-          <Stack screenOptions={{ headerShown: false }} />
-          {showSplash && (
-            <AnimatedSplashScreen onFinish={() => setShowSplash(false)} />
-          )}
-        </SavedTicketsProvider>
-      </I18nProvider>
-    </ThemeProvider>
+    <>
+      <Stack screenOptions={{ headerShown: false }} />
+      {showSplash && <AnimatedSplashScreen onFinish={() => setShowSplash(false)} />}
+    </>
   );
-} 
+}
